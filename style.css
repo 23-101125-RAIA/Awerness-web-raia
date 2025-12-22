@@ -339,3 +339,235 @@ body::before {
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(27, 35, 39, 0.4);
 }
+
+.hero-main-title {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 56px;
+    line-height: 1.2;
+    font-weight: 400;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-primary-lighter) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+
+.hero-subtitle {
+    font-size: 20px;
+    color: var(--color-medium-gray);
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.section-title {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 42px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--color-dark-gray);
+}
+
+
+
+.section-subtitle {
+    text-align: center;
+    color: var(--color-medium-gray);
+    font-size: 18px;
+    margin-bottom: 60px;
+}
+
+.card-title {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 15px;
+    color: var(--color-dark-gray);
+}
+
+
+
+.stat-number {
+    font-size: 48px;
+    font-weight: 400;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-primary-lighter) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Lilita One', sans-serif;
+}
+
+
+.hero-main {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+    background: linear-gradient(135deg, var(--color-secondary-light) 0%, var(--color-secondary) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-wrapper {
+    max-width: 1367px;
+    margin: 0 auto;
+    padding: 60px 20px;
+
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    margin-right: 140px;
+}
+
+.hero-content-main {
+    position: relative;
+    z-index: 1;
+}
+
+
+.hero-title-main {
+    font-size: 52px;
+    line-height: 1.2;
+    color: var(--color-dark-gray);
+    margin-bottom: 24px;
+}
+
+.hero-description {
+    font-size: 18px;
+    color: var(--color-medium-gray);
+    margin-bottom: 32px;
+    line-height: 1.8;
+}
+
+.hero-tree {
+    width: 410px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.hero-tree1 {
+    width: 410px;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+}
+
+
+.btn-hero {
+    display: inline-block;
+    padding: 16px 40px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-hero:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(27, 35, 39, 0.4);
+}
+
+.hero-illustration {
+    width: 780px;
+
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-primary-lighter) 100%);
+    color: var(--color-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(56, 74, 82, 0.15);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-secondary:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px var(--shadow-dark);
+}
+
+
+
+.hero-wave {
+    position: absolute;
+    bottom: -23px;
+    left: -40px;
+    right: 0;
+    color: var(--color-white);
+    fill: currentColor;
+
+}
+
+.hero-wave1 {
+
+    position: relative;
+    bottom: -157px;
+    right: 0px;
+    color: var(--color-white);
+    transform: rotate(180deg);
+    fill: currentColor;
+}
+
+.hero-wave2 {
+    position: absolute;
+    bottom: -157px;
+    left: -30px;
+    right: -80px;
+    color: var(--color-white);
+    transform: rotate(180deg);
+    z-index: 2;
+    fill: currentColor;
+}
+
+.hero-wave3 {
+    position: absolute;
+    bottom: -60px;
+    left: -40px;
+    right: 0;
+    color: #fafbfb;
+    fill: currentColor;
+    z-index: 2;
+}
