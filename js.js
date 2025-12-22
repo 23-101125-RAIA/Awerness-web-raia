@@ -6,3 +6,22 @@ function initPreloader() {
         }
     }, 4000);
 }
+
+let navItems = [
+    { textEN: "Home", textAR: "الرئيسية", link: "index.html" },
+    { textEN: "Gallery", textAR: "المعرض", link: "gallery.html" },
+    { textEN: "Center", textAR: "المركز", link: "center.html" },
+    { textEN: "Contact", textAR: "انضم إلينا", link: "contact.html" }
+];
+
+function showNav() {
+    let container = document.getElementById("headerNavLinks");
+    if (!container) return;
+
+    let html = "";
+    for (let i = 0; i < navItems.length; i++) {
+        let text = currentLanguage === "en" ? navItems[i].textEN : navItems[i].textAR;
+        html += `<li><a href="${navItems[i].link}" class="text-font">${text}</a></li>`;
+    }
+    container.innerHTML = html;
+}
