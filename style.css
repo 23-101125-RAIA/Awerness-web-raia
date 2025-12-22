@@ -571,3 +571,106 @@ body::before {
     fill: currentColor;
     z-index: 2;
 }
+
+
+.sec-principles-section {
+    background: var(--color-white);
+    padding: 0 0;
+}
+
+.sec-section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.sec-section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--color-dark-gray);
+    margin-bottom: 15px;
+}
+
+
+
+.sec-section-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: var(--color-medium-gray);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+
+.sec-principles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.sec-principle-card {
+    padding: 140px 40px 0;
+    border-radius: 24px;
+    color: var(--color-white-dark);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+    background: linear-gradient(135deg, #ffc727 0%, #F4CF66 100%)
+}
+
+
+
+.sec-principle-card:hover {
+    transform: translateY(-10px);
+}
+
+
+.sec-icon-img {
+    width: 181px;
+    height: auto;
+    object-fit: contain;
+    position: absolute;
+    left: 11px;
+    top: -30px;
+    transform: rotate(-25deg);
+}
+
+.sec-principle-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+
+
+.sec-principle-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+
+
+.sec-principle-arrow {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    background: var(--shadow-white-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    transition: all 0.3s;
+    font-weight: 800;
+}
+
+.sec-principle-card:hover .sec-principle-arrow {
+    background: var(--color-white);
+    color: var(--color-dark-gray);
+}
