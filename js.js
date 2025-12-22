@@ -210,3 +210,6 @@ function showCaseStudy() {
     if (stat2) stat2.innerHTML = randomStat2.number;
     if (label2) label2.innerHTML = currentLanguage === "en" ? randomStat2.labelEN : randomStat2.labelAR;
 }
+function initFacts() {
+  
+}
