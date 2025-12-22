@@ -1888,7 +1888,7 @@ body::before {
             display: block;
         }
 
-    
+        
         .contact-page-wrapper {
             background: linear-gradient(135deg, var(--color-secondary-light) 0%, var(--color-secondary) 100%);
             min-height: 100vh;
@@ -2072,7 +2072,7 @@ body::before {
         }
 
         .delete-button {
-            background: var(--red);
+            background: var(--error);
             color: var(--color-white);
             border: none;
             padding: 8px 15px;
@@ -2085,7 +2085,7 @@ body::before {
         }
 
         .delete-button:hover {
-            background: var(--red);
+            background: var(--error);
             transform: translateY(-2px);
         }
 
