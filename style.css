@@ -567,7 +567,7 @@ body::before {
     bottom: -60px;
     left: -40px;
     right: 0;
-    color: #fafbfb;
+    color: var(--color-white);
     fill: currentColor;
     z-index: 2;
 }
