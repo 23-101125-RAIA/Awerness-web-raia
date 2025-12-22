@@ -349,3 +349,58 @@ function showSecIndex() {
         listEl.innerHTML = html;
     }
 }
+
+
+let secCards = [
+    {
+        image: "img/a.png",
+        titleEN: "Personal Growth Habits",
+        titleAR: "عادات النمو الشخصي",
+        textEN: "Simple daily routines like journaling, movement, and reflection that support your mood and focus.",
+        textAR: "عوائد يومية بسيطة مثل الكتابة، والحركة، والتأمل الذاتي تدعم المزاج والتركيز.",
+        buttonEN: "Learn More →",
+        buttonAR: "اعرف المزيد ←"
+    },
+    {
+        image: "img/m.png",
+        titleEN: "Skills for Study & Work",
+        titleAR: "مهارات للدراسة والعمل",
+        textEN: "Planning, problem‑solving, and digital skills that lower worry about the future and improve opportunities.",
+        textAR: "مهارات التخطيط وحلّ المشكلات والمهارات الرقمية التي تقلّل القلق بشأن المستقبل وتحسّن الفرص.",
+        buttonEN: "Learn More →",
+        buttonAR: "اعرف المزيد ←"
+    },
+    {
+        image: "img/b.png",
+        titleEN: "Supportive Communities",
+        titleAR: "مجتمعات داعمة",
+        textEN: "Clubs and safe spaces where young people practice skills together and feel less alone.",
+        textAR: "أندية ومساحات آمنة يمارس فيها الشباب المهارات معًا ويشعرون فيها بقدر أقل من الوحدة.",
+        buttonEN: "Learn More →",
+        buttonAR: "اعرف المزيد ←"
+    }
+];
+
+function showSecCards() {
+    let container = document.getElementById("secCardsSlider");
+    if (!container) return;
+
+    let html = "";
+    for (let i = 0; i < secCards.length; i++) {
+        let title = currentLanguage === "en" ? secCards[i].titleEN : secCards[i].titleAR;
+        let text = currentLanguage === "en" ? secCards[i].textEN : secCards[i].textAR;
+        let button = currentLanguage === "en" ? secCards[i].buttonEN : secCards[i].buttonAR;
+
+        html += `
+            <div class="sec-vertical-card sec-card-${i + 1}">
+                <img src="${secCards[i].image}" alt="Card" class="sec-vertical-card-img">
+                <div class="sec-card-overlay">
+                    <h3 class="sec-card-overlay-title">${title}</h3>
+                    <p class="sec-card-overlay-text">${text}</p>
+                    <button class="sec-read-more-btn">${button}</button>
+                </div>
+            </div>
+        `;
+    }
+    container.innerHTML = html;
+}
