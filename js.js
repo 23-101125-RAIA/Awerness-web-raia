@@ -298,3 +298,54 @@ function showTestimonials() {
         dotsEl.innerHTML = html;
     }
 }
+
+
+let secIndex = {
+    titleEN: "Why Personal Growth Matters for Your Mind",
+    titleAR: "لماذا يهمّ النمو الشخصي لعقلك؟",
+    tagsEN: ["Mental Health", "Life Skills", "Coping", "Confidence", "Support"],
+    tagsAR: ["الصحة النفسية", "مهارات الحياة", "التكيّف", "الثقة بالنفس", "الدعم"],
+    items: [
+        { number: "1", titleEN: "What Is Personal Growth in Skills?", titleAR: "ما هو النمو الشخصي في المهارات؟", textEN: "Understand how learning emotional, social, and practical skills protects your wellbeing.", textAR: "تعرف كيف يحمي تعلّم المهارات العاطفية والاجتماعية والعملية صحتك النفسية." },
+        { number: "2", titleEN: "Early Warning Signs & Support", titleAR: "علامات مبكّرة والدعم المتاح", textEN: "Learn early signs of stress or low mood and where young people can ask for help.", textAR: "تعرّف العلامات المبكرة للضغط أو تدنّي المزاج وأين يمكن للشباب طلب المساعدة." },
+        { number: "3", titleEN: "Daily Skills That Support Mental Health", titleAR: "مهارات يومية تدعم الصحة النفسية", textEN: "Explore small skills like breathing, time‑management, and talking about feelings.", textAR: "استكشف مهارات صغيرة مثل التنفس، وإدارة الوقت، والتحدّث عن المشاعر." },
+        { number: "4", titleEN: "Stories of Change", titleAR: "قصص تغيير", textEN: "Read how youth used new skills to manage anxiety, connect with others, and stay in school.", textAR: "اطّلع على قصص شباب استخدموا مهارات جديدة للتعامل مع القلق، وبناء العلاقات، والاستمرار في الدراسة." }
+    ]
+};
+
+function showSecIndex() {
+    let titleEl = document.getElementById("secIndexTitle");
+    let tagsEl = document.getElementById("secIndexTags");
+    let listEl = document.getElementById("secIndexList");
+
+    if (titleEl) titleEl.innerHTML = currentLanguage === "en" ? secIndex.titleEN : secIndex.titleAR;
+
+    if (tagsEl) {
+        let tags = currentLanguage === "en" ? secIndex.tagsEN : secIndex.tagsAR;
+        let html = "";
+        for (let i = 0; i < tags.length; i++) {
+            html += `<span class="sec-index-tag sec-tag-1">${tags[i]}</span>`;
+        }
+        tagsEl.innerHTML = html;
+    }
+
+    if (listEl) {
+        let html = "";
+        for (let i = 0; i < secIndex.items.length; i++) {
+            let item = secIndex.items[i];
+            let title = currentLanguage === "en" ? item.titleEN : item.titleAR;
+            let text = currentLanguage === "en" ? item.textEN : item.textAR;
+
+            html += `
+                <li class="sec-index-item">
+                    <span class="sec-index-number">${item.number}.</span>
+                    <div class="sec-index-content">
+                        <h3>${title}</h3>
+                        <p>${text}</p>
+                    </div>
+                </li>
+            `;
+        }
+        listEl.innerHTML = html;
+    }
+}
