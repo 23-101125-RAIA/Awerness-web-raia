@@ -617,7 +617,7 @@ body::before {
     position: relative;
     overflow: hidden;
     transition: transform 0.3s;
-    background: linear-gradient(135deg, #ffc727 0%, #F4CF66 100%)
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%)
 }
 
 
@@ -1172,7 +1172,7 @@ body::before {
 
 .sec-read-more-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(27, 35, 39, 0.4);
+    box-shadow: 0 10px 30px var(--shadow-black);
 }
 
 .sec-strategies-header {
@@ -1607,7 +1607,15 @@ body::before {
     font-family: 'Poppins', sans-serif;
 }
 
+.body-error{
+    width: 100%;
+    height: 100vh;
+     background: linear-gradient(135deg, var(--color-secondary-light) 0%, var(--color-secondary) 100%);
+}
 
-
+.error-img{
+    width: 980px;
+    height: auto;
+}
 
 
