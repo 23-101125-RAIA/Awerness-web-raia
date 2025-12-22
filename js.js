@@ -716,5 +716,60 @@ window.addEventListener("load", function () {
 
 document.getElementById("1").innerHTML ="Skillio"
 
+let textArray = {
+            title: "Login",
+            emailLabel: "Email",
+            passwordLabel: "Password",
+            forgotPassword: "Forgot Password?",
+            genderLabel: "Gender",
+            maleLabel: "Man",
+            femaleLabel: "Woman",
+            signInButton: "Sign In",
+            dividerText: "Or Continue With",
+            registerText: "Don't have an account yet?",
+            registerLink: "Register for free",
+            errorMessage: "Incorrect email or password"
+        };
 
+       
+        document.getElementById("login-title").textContent = textArray.title;
+        document.getElementById("email-label").textContent = textArray.emailLabel;
+        document.getElementById("password-label").textContent = textArray.passwordLabel;
+        document.getElementById("forgot-link").textContent = textArray.forgotPassword;
+        document.getElementById("gender-label").textContent = textArray.genderLabel;
+        document.getElementById("male-label").textContent = textArray.maleLabel;
+        document.getElementById("female-label").textContent = textArray.femaleLabel;
+        document.getElementById("signin-button").textContent = textArray.signInButton;
+        document.getElementById("divider-text").textContent = textArray.dividerText;
+        document.getElementById("register-text").textContent = textArray.registerText;
+        document.getElementById("register-link").textContent = textArray.registerLink;
+        document.getElementById("error-message").textContent = textArray.errorMessage;
+
+        function login() {
+            let username = document.getElementById("login-username").value;
+            let password = document.getElementById("login-password").value;
+
+            document.getElementById("login-username").style.border = "2px solid var(--color-light-gray)";
+            document.getElementById("login-password").style.border = "2px solid var(--color-light-gray)";
+            document.getElementById("login-username").style.background = "var(--color-white)";
+            document.getElementById("login-password").style.background = "var(--color-white)";
+            document.getElementById("error-message").classList.remove("show");
+
+            if (username == "raia" && password == "123") {
+                window.location = "profile.html";
+            } else {
+                document.getElementById("login-username").style.background = "var(--cta)";
+                document.getElementById("login-password").style.background = "var(--cta)";
+                document.getElementById("login-username").style.border = "2px solid #ff4444";
+                document.getElementById("login-password").style.border = "2px solid #ff4444";
+                document.getElementById("error-message").classList.add("show");
+            }
+        }
+
+        document.getElementById("login-password").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                login();
+            }
+        });
+  
 
