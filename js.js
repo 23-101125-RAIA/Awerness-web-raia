@@ -25,3 +25,21 @@ function showNav() {
     }
     container.innerHTML = html;
 }
+
+function toggleLanguage() {
+    if (currentLanguage === "en") {
+        currentLanguage = "ar";
+    } else {
+        currentLanguage = "en";
+    }
+    updateAllText();
+}
+
+function initLanguageToggle() {
+    let langToggle = document.getElementById("langToggle");
+    if (langToggle) {
+        langToggle.onclick = function () {
+            toggleLanguage();
+        };
+    }
+}
