@@ -98,3 +98,51 @@ function initThemeToggle() {
         };
     }
 }
+
+
+let principles = [
+    {
+        icon: "img/flower.png",
+        titleEN: "Inclusive Learning",
+        titleAR: "التعلم الشامل",
+        textEN: "Equal access to quality skill development opportunities for all, regardless of background.",
+        textAR: "وصول متساوٍ لفرص تطوير المهارات عالية الجودة لجميع الشباب، بغض النظر عن الخلفية."
+    },
+    {
+        icon: "img/flower.png",
+        titleEN: "Creative Exploration",
+        titleAR: "الاستكشاف الإبداعي",
+        textEN: "Encouraging artistic expression and innovation through diverse creative disciplines.",
+        textAR: "تشجيع التعبير الفني والابتكار من خلال التخصصات الإبداعية المتنوعة."
+    },
+    {
+        icon: "img/flower.png",
+        titleEN: "Future Readiness",
+        titleAR: "الاستعداد للمستقبل",
+        textEN: "Preparing youth with relevant skills for evolving employment and entrepreneurship opportunities.",
+        textAR: "إعداد الشباب بالمهارات ذات الصلة لفرص التوظيف وريادة الأعمال المتطورة."
+    }
+];
+
+function showPrinciples() {
+    let container = document.getElementById("principlesGrid");
+    if (!container) return;
+
+    let html = "";
+    for (let i = 0; i < principles.length; i++) {
+        let title = currentLanguage === "en" ? principles[i].titleEN : principles[i].titleAR;
+        let text = currentLanguage === "en" ? principles[i].textEN : principles[i].textAR;
+
+        html += `
+            <div class="sec-principle-card">
+                <div class="sec-principle-icon">
+                    <img src="${principles[i].icon}" alt="Icon" class="sec-icon-img">
+                </div>
+                <h3 class="sec-principle-title">${title}</h3>
+                <p class="sec-principle-text">${text}</p>
+                <div class="sec-principle-arrow">↗</div>
+            </div>
+        `;
+    }
+    container.innerHTML = html;
+}
