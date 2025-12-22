@@ -1,0 +1,92 @@
+:root {
+   
+    --color-primary: #ffc727;
+    --color-primary-light: #F4CF66;
+    --color-primary-lighter: #FBEBA3;
+    --color-secondary: #2ec4b6;
+    --color-secondary-lighter: #bdf0ec;
+    --color-white: #fff;
+    --color-secondary-light: #cbf3f0;
+    --color-dark-gray: #232e33;
+    --color-medium-gray: #76848C;
+    --color-dark: #263238;
+    --color-white-dark: #232e33;
+    --color-light-gray: #A9AAAA;
+    --white: #fff;
+    --color-off-white: #fafbfb;
+    --color-pink: #F3ABA3;
+    --footer: #071e22;
+
+ 
+    --shadow-dark: rgba(56, 74, 82, 0.2);
+    --shadow-white: rgba(255, 255, 255, 0.7);
+    --shadow-white-light: rgba(255, 255, 255, 0.2);
+    --shadow-white-lighter: rgba(255, 255, 255, 0.1);
+    --shadow-white-lightest: rgba(255, 255, 255, 0.05);
+    --shadow-white-overlay: rgba(255, 255, 255, 0.95);
+    --shadow-dark-overlay: rgba(56, 74, 82, 0.9);
+    --shadow-dark-bg: rgba(56, 74, 82, 0.05);
+    --shadow-gray-bg: rgba(118, 132, 140, 0.05);
+    --shadow-white-border: rgba(255, 255, 255, 0.1);
+    --shadow-white-text: rgba(255, 255, 255, 0.6);
+    --shadow-primary: rgba(248, 193, 36, 0.3);
+    --shadow-primary-light: rgba(248, 193, 36, 0.4);
+    --shadow-black: rgba(27, 35, 39, 0.4);
+    --shadow-dark-light: rgba(56, 74, 82, 0.1);
+    --shadow-dark-medium: rgba(56, 74, 82, 0.15);
+}
+
+:root.dark-mode,
+body.dark-mode {
+    --color-white: #071e22;
+    --color-secondary-light: #34827c;
+    --color-dark-gray: #ffc727;
+    --color-medium-gray: #e9e9e9;
+    --color-white-dark: #fff;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a,
+li {
+
+    text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+
+::-webkit-scrollbar-track {
+    background-color: var(--color-dark);
+}
+
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: 10px;
+    border: 2px solid var(--color-dark);
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-primary);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-white);
+    color: var(--color-dark-gray);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+    overflow-x: hidden;
+}
