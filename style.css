@@ -64,7 +64,7 @@ li {
 
 
 ::-webkit-scrollbar-track {
-    background-color: var(--color-dark);
+    background-color: none;
 }
 
 
@@ -326,7 +326,7 @@ body::before {
 
 .btn1-hero {
     display: inline-block;
-    padding: 16px 40px;
+    padding: 10px 30px;
     border: 3px solid var(--color-primary);
     color: var(--color-white-dark);
     text-decoration: none;
@@ -531,9 +531,10 @@ body::before {
 
 
 
+
 .hero-wave {
     position: absolute;
-    bottom: -23px;
+    bottom: -61px;
     left: -40px;
     right: 0;
     color: var(--color-white);
@@ -564,10 +565,10 @@ body::before {
 
 .hero-wave3 {
     position: absolute;
-    bottom: -60px;
+    bottom: -8px;
     left: -40px;
     right: 0;
-    color: var(--color-white);
+    color: var(--color-white);;
     fill: currentColor;
     z-index: 2;
 }

@@ -714,5 +714,7 @@ window.addEventListener("load", function () {
     updateAllText();
 });
 
+document.getElementById("1").innerHTML ="Skillio"
+
 
 
