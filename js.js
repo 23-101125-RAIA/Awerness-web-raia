@@ -213,3 +213,88 @@ function showCaseStudy() {
 function initFacts() {
   
 }
+
+let testimonials = [
+    {
+        textEN: "\"Joining a skills and wellbeing club at my school taught me how to talk about stress instead of keeping it inside. My sleep and grades both improved.\"",
+        textAR: "\"الانضمام إلى نادٍ للمهارات والرفاه في مدرستي علّمني كيف أتحدث عن الضغط بدلًا من كتمه. تحسّن نومي ودرجاتي معًا.\"",
+        nameEN: "Carlos M.",
+        nameAR: "كارلوس م.",
+        roleEN: "Student, Age 17",
+        roleAR: "طالب، 17 عامًا",
+        avatar: "img/messy bun-cuate.png"
+    },
+    {
+        textEN: "\"The personal growth workshops showed me that asking for help is a skill. I learned coping tools that made my anxiety feel less overwhelming.\"",
+        textAR: "\"ورش النمو الشخصي جعلتني أرى أن طلب المساعدة مهارة بحدّ ذاتها. تعلّمت أدوات تكيّف جعلت قلقي أقل إرباكًا.\"",
+        nameEN: "Aisha K.",
+        nameAR: "عائشة ك.",
+        roleEN: "Youth Volunteer, Age 19",
+        roleAR: "متطوّعة شابة، 19 عامًا",
+        avatar: "img/messy bun-cuate.png"
+    },
+    {
+        textEN: "\"Practicing problem‑solving and time‑management with a mentor helped me feel less stuck. I now have a routine that supports both my goals and my mental health.\"",
+        textAR: "\"ممارسة حلّ المشكلات وإدارة الوقت مع مرشد ساعدتني على التوقّف عن الشعور بالعجز. لدي الآن روتين يدعم أهدافي وصحّتي النفسية معًا.\"",
+        nameEN: "James L.",
+        nameAR: "جيمس ل.",
+        roleEN: "Apprentice, Age 18",
+        roleAR: "متدرّب، 18 عامًا",
+        avatar: "img/messy bun-cuate.png"
+    },
+    {
+        textEN: "\"Our community center combined creative skills with mental health check‑ins. I felt seen, built friendships, and learned ways to calm my mind.\"",
+        textAR: "\"جمع مركز المجتمع بين المهارات الإبداعية وجلسات متابعة للصحة النفسية. شعرت بأنني مرئي، وبنيت صداقات، وتعلّمت طرقًا لتهدئة ذهني.\"",
+        nameEN: "Maria S.",
+        nameAR: "ماريا س.",
+        roleEN: "Participant, Age 20",
+        roleAR: "مشاركة، 20 عامًا",
+        avatar: "img/messy bun-cuate.png"
+    }
+];
+
+function showTestimonials() {
+    let titleEl = document.getElementById("testimonialsTitle");
+    let sliderEl = document.getElementById("testimonialSlider");
+    let dotsEl = document.getElementById("sliderDots");
+
+    let text = currentLanguage === "en" ? englishText : arabicText;
+
+    if (titleEl) titleEl.innerHTML = text.testimonialsTitle;
+
+    if (sliderEl) {
+        let html = "";
+        for (let i = 0; i < testimonials.length; i++) {
+            let t = testimonials[i];
+            let tText = currentLanguage === "en" ? t.textEN : t.textAR;
+            let tName = currentLanguage === "en" ? t.nameEN : t.nameAR;
+            let tRole = currentLanguage === "en" ? t.roleEN : t.roleAR;
+
+            html += `
+                <div class="testimonial-card">
+                    <p class="testimonial-text text-font">${tText}</p>
+                    <div class="testimonial-author">
+                        <img src="${t.avatar}" class="author-avatar">
+                        <div>
+                            <p class="author-name text-font">${tName}</p>
+                            <p class="author-role text-font">${tRole}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        sliderEl.innerHTML = html;
+    }
+
+    if (dotsEl) {
+        let html = "";
+        for (let i = 0; i < testimonials.length; i++) {
+            if (i === 0) {
+                html += `<span class="dot active"></span>`;
+            } else {
+                html += `<span class="dot"></span>`;
+            }
+        }
+        dotsEl.innerHTML = html;
+    }
+}
