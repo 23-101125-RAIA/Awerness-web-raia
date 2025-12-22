@@ -773,4 +773,146 @@ document.getElementById("1").innerHTML ="Skillio"
             }
         });
 
-        
+          let textArray = {
+            pageTitle: "Contact Us",
+            formTitle: "Send us a message",
+            nameLabel: "Name",
+            emailLabel: "Email",
+            messageLabel: "Message",
+            submitButton: "Send Message",
+            successMessage: "Your message has been sent successfully!",
+            nameError: "Please enter your name",
+            emailError: "Please enter your email",
+            messageError: "Please enter your message",
+            namePlaceholder: "Enter your name",
+            emailPlaceholder: "Enter your email",
+            messagePlaceholder: "Enter your message"
+        };
+
+        document.getElementById("page-title").textContent = textArray.pageTitle;
+        document.getElementById("form-title").textContent = textArray.formTitle;
+        document.getElementById("name-label").textContent = textArray.nameLabel;
+        document.getElementById("email-label").textContent = textArray.emailLabel;
+        document.getElementById("message-label").textContent = textArray.messageLabel;
+        document.getElementById("submit-button").textContent = textArray.submitButton;
+        document.getElementById("success-message").textContent = textArray.successMessage;
+        document.getElementById("name-error").textContent = textArray.nameError;
+        document.getElementById("email-error").textContent = textArray.emailError;
+        document.getElementById("message-error").textContent = textArray.messageError;
+        document.getElementById("name").placeholder = textArray.namePlaceholder;
+        document.getElementById("email").placeholder = textArray.emailPlaceholder;
+        document.getElementById("message").placeholder = textArray.messagePlaceholder;
+
+        function validateForm(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let message = document.getElementById("message").value;
+
+            document.getElementById("name").classList.remove("error");
+            document.getElementById("email").classList.remove("error");
+            document.getElementById("message").classList.remove("error");
+            document.getElementById("name-error").classList.remove("show");
+            document.getElementById("email-error").classList.remove("show");
+            document.getElementById("message-error").classList.remove("show");
+            document.getElementById("success-message").classList.remove("show");
+
+            let isValid = true;
+
+            if (name == "") {
+                document.getElementById("name").classList.add("error");
+                document.getElementById("name-error").classList.add("show");
+                isValid = false;
+            }
+
+            if (email == "") {
+                document.getElementById("email").classList.add("error");
+                document.getElementById("email-error").classList.add("show");
+                isValid = false;
+            }
+
+            if (message == "") {
+                document.getElementById("message").classList.add("error");
+                document.getElementById("message-error").classList.add("show");
+                isValid = false;
+            }
+
+            if (isValid) {
+                saveFormData(name, email, message);
+                showSuccessSendMsg();
+                document.getElementById("contact-form").reset();
+            }
+        }
+
+        function saveFormData(name, email, message) {
+            let messages = [];
+            
+            if (localStorage.getItem("contactMessages")) {
+                messages = JSON.parse(localStorage.getItem("contactMessages"));
+            }
+
+            let newMessage = {
+                name: name,
+                email: email,
+                message: message,
+                date: new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString()
+            };
+
+            messages.push(newMessage);
+
+            localStorage.setItem("contactMessages", JSON.stringify(messages));
+
+            getSavedData();
+        }
+
+        function showSuccessSendMsg() {
+            document.getElementById("success-message").classList.add("show");
+
+            setTimeout(function() {
+                document.getElementById("success-message").classList.remove("show");
+            }, 3000);
+        }
+
+        function getSavedData() {
+            let messages = [];
+            
+            if (localStorage.getItem("contactMessages")) {
+                messages = JSON.parse(localStorage.getItem("contactMessages"));
+            }
+
+            let tbody = document.getElementById("messages-tbody");
+            tbody.innerHTML = "";
+
+            if (messages.length == 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="no-messages">No messages yet</td></tr>';
+            } else {
+                for (let i = 0; i < messages.length; i++) {
+                    let row = document.createElement("tr");
+                    
+                    row.innerHTML = `
+                        <td>${messages[i].name}</td>
+                        <td>${messages[i].email}</td>
+                        <td>${messages[i].message}</td>
+                        <td>${messages[i].date}</td>
+                        <td><button class="delete-button" onclick="deleteMessage(${i})">Delete</button></td>
+                    `;
+                    
+                    tbody.appendChild(row);
+                }
+            }
+        }
+
+        function deleteMessage(index) {
+            let messages = JSON.parse(localStorage.getItem("contactMessages"));
+            
+            messages.splice(index, 1);
+            
+            localStorage.setItem("contactMessages", JSON.stringify(messages));
+            
+            getSavedData();
+        }
+
+        window.onload = function() {
+            getSavedData();
+        };
