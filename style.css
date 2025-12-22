@@ -1274,6 +1274,122 @@ body::before {
     color: var(--color-medium-gray);
 }
 
+.image-slider-section {
+    padding: 200px 0 100px;
+    background: linear-gradient(135deg, var(--color-secondary-light) 0%, var(--color-secondary) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.slider-section-title {
+    font-size: 48px;
+    color: var(--color-dark-gray);
+    margin-bottom: 16px;
+}
+
+.slider-section-subtitle {
+    font-size: 16px;
+    color: var(--color-medium-gray);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.image-slider-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.slider-main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-images {
+    width: 420px;
+    height: 420px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 20px 40px var(--shadow-dark);
+}
+
+.slider-image-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    object-fit: cover;
+}
+
+.slider-image-item.active {
+    opacity: 1;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 50%;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.slider-btn:hover {
+    background: var(--color-primary-light);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-prev {
+    left: calc(50% - 280px);
+}
+
+.slider-next {
+    right: calc(50% - 280px);
+}
+
+.slider-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.slider-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-secondary-light);
+    cursor: pointer;
+    transition: all 0.3s;
+    opacity: 0.7;
+}
+
+.slider-indicator.active {
+    background: var(--color-pink);
+    width: 30px;
+    border-radius: 6px;
+    opacity: 1;
+}
+
 
 
 
