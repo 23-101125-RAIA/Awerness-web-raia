@@ -404,3 +404,104 @@ function showSecCards() {
     }
     container.innerHTML = html;
 }
+
+let currentSliderIndex = 0;
+let sliderTimer = null;
+
+function showImageSlider() {
+    let titleEl = document.getElementById("sliderSectionTitle");
+    let subtitleEl = document.getElementById("sliderSectionSubtitle");
+    let indicatorsEl = document.getElementById("sliderIndicators");
+    let imagesContainer = document.getElementById("sliderImages");
+
+    let text = currentLanguage === "en" ? englishText : arabicText;
+
+    if (titleEl) titleEl.innerHTML = text.sliderSectionTitle;
+    if (subtitleEl) subtitleEl.innerHTML = text.sliderSectionSubtitle;
+
+    if (imagesContainer && indicatorsEl) {
+        let images = imagesContainer.querySelectorAll(".slider-image-item");
+        let html = "";
+
+        for (let i = 0; i < images.length; i++) {
+            if (i === 0) {
+                images[i].classList.add("active");
+                html += `<div class="slider-indicator active"></div>`;
+            } else {
+                images[i].classList.remove("active");
+                html += `<div class="slider-indicator"></div>`;
+            }
+        }
+        indicatorsEl.innerHTML = html;
+
+        setupIndicatorClicks();
+        currentSliderIndex = 0;
+        startSliderAutoPlay();
+    }
+}
+
+function setupIndicatorClicks() {
+    let indicators = document.querySelectorAll(".slider-indicator");
+
+    for (let i = 0; i < indicators.length; i++) {
+        indicators[i].setAttribute("data-index", i);
+        indicators[i].onclick = function () {
+            let index = parseInt(this.getAttribute("data-index"));
+            showSliderImage(index);
+        };
+    }
+}
+
+function showSliderImage(index) {
+    let images = document.querySelectorAll(".slider-image-item");
+    let indicators = document.querySelectorAll(".slider-indicator");
+
+    if (images.length === 0) return;
+
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+
+    currentSliderIndex = index;
+
+    for (let i = 0; i < images.length; i++) {
+        if (i === currentSliderIndex) {
+            images[i].classList.add("active");
+            indicators[i].classList.add("active");
+        } else {
+            images[i].classList.remove("active");
+            indicators[i].classList.remove("active");
+        }
+    }
+}
+
+function nextSliderImage() {
+    showSliderImage(currentSliderIndex + 1);
+}
+
+function prevSliderImage() {
+    showSliderImage(currentSliderIndex - 1);
+}
+
+function startSliderAutoPlay() {
+    if (sliderTimer) clearInterval(sliderTimer);
+    sliderTimer = setInterval(nextSliderImage, 4000);
+}
+
+function initSliderControls() {
+    let sliderPrevBtn = document.getElementById("sliderPrevBtn");
+    let sliderNextBtn = document.getElementById("sliderNextBtn");
+
+    if (sliderPrevBtn) {
+        sliderPrevBtn.onclick = function () {
+            prevSliderImage();
+            startSliderAutoPlay();
+        };
+    }
+
+    if (sliderNextBtn) {
+        sliderNextBtn.onclick = function () {
+            nextSliderImage();
+            startSliderAutoPlay();
+        };
+    }
+}
