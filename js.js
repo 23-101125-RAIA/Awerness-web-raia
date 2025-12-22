@@ -773,7 +773,7 @@ document.getElementById("1").innerHTML ="Skillio"
             }
         });
 
-          let textArray = {
+          let textArray1 = {
             pageTitle: "Contact Us",
             formTitle: "Send us a message",
             nameLabel: "Name",
@@ -789,19 +789,19 @@ document.getElementById("1").innerHTML ="Skillio"
             messagePlaceholder: "Enter your message"
         };
 
-        document.getElementById("page-title").textContent = textArray.pageTitle;
-        document.getElementById("form-title").textContent = textArray.formTitle;
-        document.getElementById("name-label").textContent = textArray.nameLabel;
-        document.getElementById("email-label").textContent = textArray.emailLabel;
-        document.getElementById("message-label").textContent = textArray.messageLabel;
-        document.getElementById("submit-button").textContent = textArray.submitButton;
-        document.getElementById("success-message").textContent = textArray.successMessage;
-        document.getElementById("name-error").textContent = textArray.nameError;
-        document.getElementById("email-error").textContent = textArray.emailError;
-        document.getElementById("message-error").textContent = textArray.messageError;
-        document.getElementById("name").placeholder = textArray.namePlaceholder;
-        document.getElementById("email").placeholder = textArray.emailPlaceholder;
-        document.getElementById("message").placeholder = textArray.messagePlaceholder;
+        document.getElementById("page-title").textContent = textArray1.pageTitle;
+        document.getElementById("form-title").textContent = textArray1.formTitle;
+        document.getElementById("name-label").textContent = textArray1.nameLabel;
+        document.getElementById("email-label").textContent = textArray1.emailLabel;
+        document.getElementById("message-label").textContent = textArray1.messageLabel;
+        document.getElementById("submit-button").textContent = textArray1.submitButton;
+        document.getElementById("success-message").textContent = textArray1.successMessage;
+        document.getElementById("name-error").textContent = textArray1.nameError;
+        document.getElementById("email-error").textContent = textArray1.emailError;
+        document.getElementById("message-error").textContent = textArray1.messageError;
+        document.getElementById("name").placeholder = textArray1.namePlaceholder;
+        document.getElementById("email").placeholder = textArray1.emailPlaceholder;
+        document.getElementById("message").placeholder = textArray1.messagePlaceholder;
 
         function validateForm(event) {
             event.preventDefault();
