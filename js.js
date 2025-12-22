@@ -54,11 +54,19 @@ let navItems = [
 function showNav() {
     let container = document.getElementById("headerNavLinks");
     if (!container) return;
-
+    let currentPage = window.location.pathname.split("/").pop().toLowerCase();
+    if (currentPage === "" || currentPage === "index.html") {
+        currentPage = "index.html";
+    }
     let html = "";
     for (let i = 0; i < navItems.length; i++) {
         let text = currentLanguage === "en" ? navItems[i].textEN : navItems[i].textAR;
-        html += `<li><a href="${navItems[i].link}" class="text-font">${text}</a></li>`;
+        let linkPage = navItems[i].link.toLowerCase();
+        let activeClass = "";
+        if (currentPage === linkPage) {
+            activeClass = " active";
+        }
+        html += '<li><a href="' + navItems[i].link + '" class="text-font' + activeClass + '">' + text + '</a></li>';
     }
     container.innerHTML = html;
 }
@@ -70,6 +78,10 @@ function toggleLanguage() {
         currentLanguage = "en";
     }
     updateAllText();
+    showLoginText();
+    showContactText();
+    showGalleryText();
+    loadGallery();
 }
 
 function initLanguageToggle() {
@@ -211,7 +223,7 @@ function showCaseStudy() {
     if (label2) label2.innerHTML = currentLanguage === "en" ? randomStat2.labelEN : randomStat2.labelAR;
 }
 function initFacts() {
-  
+
 }
 
 let testimonials = [
@@ -696,223 +708,367 @@ function updateAllText() {
 }
 
 
+function showButtonIcons() {
+    let scrollTopBtn = document.getElementById("scrollTopBtn");
+    if (scrollTopBtn) scrollTopBtn.innerHTML = "↑";
+    let sliderPrevBtn = document.getElementById("sliderPrevBtn");
+    if (sliderPrevBtn) sliderPrevBtn.innerHTML = "‹";
+    let sliderNextBtn = document.getElementById("sliderNextBtn");
+    if (sliderNextBtn) sliderNextBtn.innerHTML = "›";
+}
+
 window.addEventListener("load", function () {
- 
     setTimeout(function () {
         let preloader = document.getElementById("preloader");
         if (preloader) {
             preloader.classList.add("hidden");
         }
     }, 4000);
-
-  
     initLanguageToggle();
     initThemeToggle();
     initScrollTop();
     initSliderControls();
     initFacts();
+    showButtonIcons();
     updateAllText();
+    showLoginText();
+    initLoginKeypress();
+    showContactText();
+    showGalleryText();
+    loadGallery();
+    initGalleryEvents();
 });
 
-document.getElementById("1").innerHTML ="Skillio"
-        let textArray = {
-            title: "Login",
-            emailLabel: "Email",
-            passwordLabel: "Password",
-            forgotPassword: "Forgot Password?",
-            genderLabel: "Gender",
-            maleLabel: "Man",
-            femaleLabel: "Woman",
-            signInButton: "Sign In",
-            dividerText: "Or Continue With",
-            registerText: "Don't have an account yet?",
-            registerLink: "Register for free",
-            errorMessage: "Incorrect email or password"
-        };
+function showLoginText() {
+    if (!document.getElementById("login-title")) return;
+    let text = currentLanguage === "en" ? loginTextEN : loginTextAR;
+    document.getElementById("1").innerHTML = "Skillio";
+    document.getElementById("login-title").innerHTML = text.title;
+    document.getElementById("email-label").innerHTML = text.emailLabel;
+    document.getElementById("password-label").innerHTML = text.passwordLabel;
+    document.getElementById("forgot-link").innerHTML = text.forgotPassword;
+    document.getElementById("gender-label").innerHTML = text.genderLabel;
+    document.getElementById("male-label").innerHTML = text.maleLabel;
+    document.getElementById("female-label").innerHTML = text.femaleLabel;
+    document.getElementById("signin-button").innerHTML = text.signInButton;
+    document.getElementById("divider-text").innerHTML = text.dividerText;
+    document.getElementById("register-text").innerHTML = text.registerText;
+    document.getElementById("register-link").innerHTML = text.registerLink;
+    document.getElementById("error-message").innerHTML = text.errorMessage;
+}
 
-        document.getElementById("login-title").textContent = textArray.title;
-        document.getElementById("email-label").textContent = textArray.emailLabel;
-        document.getElementById("password-label").textContent = textArray.passwordLabel;
-        document.getElementById("forgot-link").textContent = textArray.forgotPassword;
-        document.getElementById("gender-label").textContent = textArray.genderLabel;
-        document.getElementById("male-label").textContent = textArray.maleLabel;
-        document.getElementById("female-label").textContent = textArray.femaleLabel;
-        document.getElementById("signin-button").textContent = textArray.signInButton;
-        document.getElementById("divider-text").textContent = textArray.dividerText;
-        document.getElementById("register-text").textContent = textArray.registerText;
-        document.getElementById("register-link").textContent = textArray.registerLink;
-        document.getElementById("error-message").textContent = textArray.errorMessage;
+let loginTextEN = {
+    title: "Login",
+    emailLabel: "Email",
+    passwordLabel: "Password",
+    forgotPassword: "Forgot Password?",
+    genderLabel: "Gender",
+    maleLabel: "Man",
+    femaleLabel: "Woman",
+    signInButton: "Sign In",
+    dividerText: "Or Continue With",
+    registerText: "Don't have an account yet?",
+    registerLink: "Register for free",
+    errorMessage: "Incorrect email or password"
+};
 
-        function login() {
-            let username = document.getElementById("login-username").value;
-            let password = document.getElementById("login-password").value;
-            let gender = document.querySelector('input[name="gender"]:checked').value;
+let loginTextAR = {
+    title: "تسجيل الدخول",
+    emailLabel: "البريد الإلكتروني",
+    passwordLabel: "كلمة المرور",
+    forgotPassword: "نسيت كلمة المرور؟",
+    genderLabel: "الجنس",
+    maleLabel: "رجل",
+    femaleLabel: "امرأة",
+    signInButton: "تسجيل الدخول",
+    dividerText: "أو تابع مع",
+    registerText: "ليس لديك حساب؟",
+    registerLink: "سجل مجانا",
+    errorMessage: "البريد أو كلمة المرور غير صحيحة"
+};
 
-            document.getElementById("login-username").style.border = "2px solid var(--color-light-gray)";
-            document.getElementById("login-password").style.border = "2px solid var(--color-light-gray)";
-            document.getElementById("login-username").style.background = "var(--color-white)";
-            document.getElementById("login-password").style.background = "var(--color-white)";
-            document.getElementById("gender-section").classList.remove("error");
-            document.getElementById("error-message").classList.remove("show");
+function login() {
+    let username = document.getElementById("login-username").value;
+    let password = document.getElementById("login-password").value;
+    let gender = document.querySelector('input[name="gender"]:checked').value;
 
-            if (username == "raia@gmail.com" && password == "123" && gender == "female") {
-                window.location = "index.html";
-            } else {
-                document.getElementById("login-username").style.background = "var(--cta)";
-                document.getElementById("login-password").style.background = "var(--cta)";
-                document.getElementById("login-username").style.border = "2px solid #ff4444";
-                document.getElementById("login-password").style.border = "2px solid #ff4444";
-                document.getElementById("gender-section").classList.add("error");
-                document.getElementById("error-message").classList.add("show");
-            }
-        }
+    document.getElementById("login-username").style.border = "2px solid var(--color-light-gray)";
+    document.getElementById("login-password").style.border = "2px solid var(--color-light-gray)";
+    document.getElementById("login-username").style.background = "var(--color-white)";
+    document.getElementById("login-password").style.background = "var(--color-white)";
+    document.getElementById("gender-section").classList.remove("error");
+    document.getElementById("error-message").classList.remove("show");
 
-        document.getElementById("login-password").addEventListener("keypress", function(event) {
+    if (username == "raia@gmail.com" && password == "123" && gender == "female") {
+        window.location = "index.html";
+    } else if (username == "ali@gmail.com" && password == "123" && gender == "male") {
+        window.location = "index.html";
+    } else {
+        document.getElementById("login-username").style.background = "var(--cta)";
+        document.getElementById("login-password").style.background = "var(--cta)";
+        document.getElementById("login-username").style.border = "2px solid #ff4444";
+        document.getElementById("login-password").style.border = "2px solid #ff4444";
+        document.getElementById("gender-section").classList.add("error");
+        document.getElementById("error-message").classList.add("show");
+    }
+}
+
+function initLoginKeypress() {
+    let passEl = document.getElementById("login-password");
+    if (passEl) {
+        passEl.addEventListener("keypress", function (event) {
             if (event.key === "Enter") {
                 login();
             }
         });
+    }
+}
 
-          let textArray1 = {
-            pageTitle: "Contact Us",
-            formTitle: "Send us a message",
-            nameLabel: "Name",
-            emailLabel: "Email",
-            messageLabel: "Message",
-            submitButton: "Send Message",
-            successMessage: "Your message has been sent successfully!",
-            nameError: "Please enter your name",
-            emailError: "Please enter your email",
-            messageError: "Please enter your message",
-            namePlaceholder: "Enter your name",
-            emailPlaceholder: "Enter your email",
-            messagePlaceholder: "Enter your message"
-        };
+let contactTextEN = {
+    pageTitle: "Contact Us",
+    formTitle: "Send us a message",
+    nameLabel: "Name",
+    emailLabel: "Email",
+    messageLabel: "Message",
+    submitButton: "Send Message",
+    successMessage: "Your message has been sent successfully!",
+    nameError: "Please enter your name",
+    emailError: "Please enter your email",
+    messageError: "Please enter your message",
+    namePlaceholder: "Enter your name",
+    emailPlaceholder: "Enter your email",
+    messagePlaceholder: "Enter your message"
+};
 
-        document.getElementById("page-title").textContent = textArray1.pageTitle;
-        document.getElementById("form-title").textContent = textArray1.formTitle;
-        document.getElementById("name-label").textContent = textArray1.nameLabel;
-        document.getElementById("email-label").textContent = textArray1.emailLabel;
-        document.getElementById("message-label").textContent = textArray1.messageLabel;
-        document.getElementById("submit-button").textContent = textArray1.submitButton;
-        document.getElementById("success-message").textContent = textArray1.successMessage;
-        document.getElementById("name-error").textContent = textArray1.nameError;
-        document.getElementById("email-error").textContent = textArray1.emailError;
-        document.getElementById("message-error").textContent = textArray1.messageError;
-        document.getElementById("name").placeholder = textArray1.namePlaceholder;
-        document.getElementById("email").placeholder = textArray1.emailPlaceholder;
-        document.getElementById("message").placeholder = textArray1.messagePlaceholder;
+let contactTextAR = {
+    pageTitle: "اتصل بنا",
+    formTitle: "أرسل لنا رسالة",
+    nameLabel: "الاسم",
+    emailLabel: "البريد الإلكتروني",
+    messageLabel: "الرسالة",
+    submitButton: "إرسال الرسالة",
+    successMessage: "تم إرسال رسالتك بنجاح!",
+    nameError: "يرجى إدخال اسمك",
+    emailError: "يرجى إدخال بريدك الإلكتروني",
+    messageError: "يرجى إدخال رسالتك",
+    namePlaceholder: "أدخل اسمك",
+    emailPlaceholder: "أدخل بريدك الإلكتروني",
+    messagePlaceholder: "أدخل رسالتك"
+};
 
-        function validateForm(event) {
-            event.preventDefault();
+function showContactText() {
+    if (!document.getElementById("page-title")) return;
+    let text = currentLanguage === "en" ? contactTextEN : contactTextAR;
+    document.getElementById("1").innerHTML = "Skillio";
+    document.getElementById("page-title").innerHTML = text.pageTitle;
+    document.getElementById("form-title").innerHTML = text.formTitle;
+    document.getElementById("name-label").innerHTML = text.nameLabel;
+    document.getElementById("email-label").innerHTML = text.emailLabel;
+    document.getElementById("message-label").innerHTML = text.messageLabel;
+    document.getElementById("submit-button").innerHTML = text.submitButton;
+    document.getElementById("success-message").innerHTML = text.successMessage;
+    document.getElementById("name-error").innerHTML = text.nameError;
+    document.getElementById("email-error").innerHTML = text.emailError;
+    document.getElementById("message-error").innerHTML = text.messageError;
+    document.getElementById("name").placeholder = text.namePlaceholder;
+    document.getElementById("email").placeholder = text.emailPlaceholder;
+    document.getElementById("message").placeholder = text.messagePlaceholder;
+}
 
-            let name = document.getElementById("name").value;
-            let email = document.getElementById("email").value;
-            let message = document.getElementById("message").value;
+function validateForm(event) {
+    event.preventDefault();
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let message = document.getElementById("message").value;
+    document.getElementById("name").classList.remove("error");
+    document.getElementById("email").classList.remove("error");
+    document.getElementById("message").classList.remove("error");
+    document.getElementById("name-error").classList.remove("show");
+    document.getElementById("email-error").classList.remove("show");
+    document.getElementById("message-error").classList.remove("show");
+    document.getElementById("success-message").classList.remove("show");
+    let isValid = true;
+    if (name == "") {
+        document.getElementById("name").classList.add("error");
+        document.getElementById("name-error").classList.add("show");
+        isValid = false;
+    }
+    if (email == "") {
+        document.getElementById("email").classList.add("error");
+        document.getElementById("email-error").classList.add("show");
+        isValid = false;
+    }
+    if (message == "") {
+        document.getElementById("message").classList.add("error");
+        document.getElementById("message-error").classList.add("show");
+        isValid = false;
+    }
+    if (isValid) {
+        saveFormData(name, email, message);
+        showSuccessSendMsg();
+        document.getElementById("contact-form").reset();
+    }
+}
 
-            document.getElementById("name").classList.remove("error");
-            document.getElementById("email").classList.remove("error");
-            document.getElementById("message").classList.remove("error");
-            document.getElementById("name-error").classList.remove("show");
-            document.getElementById("email-error").classList.remove("show");
-            document.getElementById("message-error").classList.remove("show");
-            document.getElementById("success-message").classList.remove("show");
+function saveFormData(name, email, message) {
+    let messages = [];
+    if (localStorage.getItem("contactMessages")) {
+        messages = JSON.parse(localStorage.getItem("contactMessages"));
+    }
+    let newMessage = {
+        name: name,
+        email: email,
+        message: message,
+        date: new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString()
+    };
+    messages.push(newMessage);
+    localStorage.setItem("contactMessages", JSON.stringify(messages));
+}
 
-            let isValid = true;
+function showSuccessSendMsg() {
+    document.getElementById("success-message").classList.add("show");
+    setTimeout(function () {
+        document.getElementById("success-message").classList.remove("show");
+    }, 3000);
+}
 
-            if (name == "") {
-                document.getElementById("name").classList.add("error");
-                document.getElementById("name-error").classList.add("show");
-                isValid = false;
-            }
-
-            if (email == "") {
-                document.getElementById("email").classList.add("error");
-                document.getElementById("email-error").classList.add("show");
-                isValid = false;
-            }
-
-            if (message == "") {
-                document.getElementById("message").classList.add("error");
-                document.getElementById("message-error").classList.add("show");
-                isValid = false;
-            }
-
-            if (isValid) {
-                saveFormData(name, email, message);
-                showSuccessSendMsg();
-                document.getElementById("contact-form").reset();
-            }
+function getSavedData() {
+    let tbody = document.getElementById("messages-tbody");
+    if (!tbody) return;
+    let messages = [];
+    if (localStorage.getItem("contactMessages")) {
+        messages = JSON.parse(localStorage.getItem("contactMessages"));
+    }
+    tbody.innerHTML = "";
+    if (messages.length == 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="no-messages">No messages yet</td></tr>';
+    } else {
+        for (let i = 0; i < messages.length; i++) {
+            let row = document.createElement("tr");
+            row.innerHTML = '<td>' + messages[i].name + '</td><td>' + messages[i].email + '</td><td>' + messages[i].message + '</td><td>' + messages[i].date + '</td><td><button class="delete-button" onclick="deleteMessage(' + i + ')">Delete</button></td>';
+            tbody.appendChild(row);
         }
+    }
+}
 
-        function saveFormData(name, email, message) {
-            let messages = [];
-            
-            if (localStorage.getItem("contactMessages")) {
-                messages = JSON.parse(localStorage.getItem("contactMessages"));
+function deleteMessage(index) {
+    let messages = JSON.parse(localStorage.getItem("contactMessages"));
+    messages.splice(index, 1);
+    localStorage.setItem("contactMessages", JSON.stringify(messages));
+    getSavedData();
+}
+
+let galleryTextEN = {
+    heroTitle: "Discover Skills That Transform Lives",
+    heroDescription: "Building mental wellness through creative expression and skill development. Explore activities that nurture your mind, body, and spirit.",
+    heroButton: "Explore Skills",
+    galleryTitle: "Skills Gallery",
+    gallerySubtitle: "Discover diverse activities that promote mental health, self-expression, and personal growth. Each skill offers a unique path to wellness and creativity.",
+    supportTitle: "You're Not Alone on This Journey",
+    supportText: "Mental wellness is a journey we take together. Our community provides support, resources, and encouragement as you explore new skills and discover what brings you joy and peace. Every step forward is a victory worth celebrating.",
+    supportButton: "Join Our Community"
+};
+
+let galleryTextAR = {
+    heroTitle: "اكتشف مهارات تغير الحياة",
+    heroDescription: "بناء الصحة النفسية من خلال التعبير الإبداعي وتطوير المهارات. استكشف أنشطة تغذي عقلك وجسمك وروحك.",
+    heroButton: "استكشف المهارات",
+    galleryTitle: "معرض المهارات",
+    gallerySubtitle: "اكتشف أنشطة متنوعة تعزز الصحة النفسية والتعبير عن الذات والنمو الشخصي. كل مهارة تقدم طريقاً فريداً للصحة والإبداع.",
+    supportTitle: "لست وحدك في هذه الرحلة",
+    supportText: "الصحة النفسية رحلة نخوضها معاً. مجتمعنا يقدم الدعم والموارد والتشجيع بينما تستكشف مهارات جديدة وتكتشف ما يجلب لك السعادة والسلام.",
+    supportButton: "انضم إلى مجتمعنا"
+};
+
+let galleryItems = [
+    { title: "Art Therapy", titleAR: "العلاج بالفن", description: "Express yourself through painting and creative visual arts", descriptionAR: "عبر عن نفسك من خلال الرسم والفنون البصرية الإبداعية", image: "img/Bird on a wire-cuate.png" },
+    { title: "Culinary Skills", titleAR: "مهارات الطهي", description: "Discover mindfulness and creativity through cooking", descriptionAR: "اكتشف اليقظة والإبداع من خلال الطبخ", image: "img/m.png" },
+    { title: "Dance & Movement", titleAR: "الرقص والحركة", description: "Release stress and express emotions through dance", descriptionAR: "تخلص من التوتر وعبر عن مشاعرك من خلال الرقص", image: "img/m.png" },
+    { title: "Music & Sound", titleAR: "الموسيقى والصوت", description: "Heal and connect through musical expression", descriptionAR: "تعافى وتواصل من خلال التعبير الموسيقي", image: "img/m.png" },
+    { title: "Sports & Fitness", titleAR: "الرياضة واللياقة", description: "Build confidence and reduce anxiety through physical activity", descriptionAR: "ابنِ الثقة وقلل القلق من خلال النشاط البدني", image: "img/m.png" },
+    { title: "Creative Writing", titleAR: "الكتابة الإبداعية", description: "Process emotions and tell your story through words", descriptionAR: "عالج مشاعرك واحكِ قصتك من خلال الكلمات", image: "img/m.png" },
+    { title: "Gardening & Nature", titleAR: "البستنة والطبيعة", description: "Find peace and grounding through working with plants", descriptionAR: "اعثر على السلام والتوازن من خلال العمل مع النباتات", image: "img/m.png" },
+    { title: "Crafts & DIY", titleAR: "الحرف اليدوية", description: "Practice mindfulness through hands-on creative projects", descriptionAR: "مارس اليقظة من خلال المشاريع الإبداعية العملية", image: "img/m.png" }
+];
+
+function showGalleryText() {
+    if (!document.getElementById("heroGalleryTitle")) return;
+    let text = currentLanguage === "en" ? galleryTextEN : galleryTextAR;
+    document.getElementById("1").innerHTML = "Skillio";
+    document.getElementById("heroGalleryTitle").innerHTML = text.heroTitle;
+    document.getElementById("heroGalleryDescription").innerHTML = text.heroDescription;
+    document.getElementById("heroGalleryButton").innerHTML = text.heroButton;
+    document.getElementById("galleryMainTitle").innerHTML = text.galleryTitle;
+    document.getElementById("galleryMainSubtitle").innerHTML = text.gallerySubtitle;
+    document.getElementById("supportWellnessTitle").innerHTML = text.supportTitle;
+    document.getElementById("supportWellnessText").innerHTML = text.supportText;
+    document.getElementById("btnSupportWellness").innerHTML = text.supportButton;
+    document.getElementById("lightboxClose").innerHTML = "✕";
+}
+
+function loadGallery() {
+    let galleryGrid = document.getElementById("galleryGrid");
+    if (!galleryGrid) return;
+    galleryGrid.innerHTML = "";
+    for (let i = 0; i < galleryItems.length; i++) {
+        let item = galleryItems[i];
+        let galleryItem = document.createElement("div");
+        galleryItem.className = "gallery-item";
+        let img = document.createElement("img");
+        img.src = item.image;
+        img.alt = currentLanguage === "en" ? item.title : item.titleAR;
+        img.className = "gallery-item-img";
+        let overlay = document.createElement("div");
+        overlay.className = "gallery-overlay";
+        let overlayIcon = document.createElement("img");
+        overlayIcon.className = "gallery-overlay-icon";
+        overlayIcon.src = "img/zoom-in.png";
+        overlayIcon.id = "galleryIcon" + i;
+        let overlayTitle = document.createElement("div");
+        overlayTitle.className = "gallery-overlay-title";
+        overlayTitle.innerHTML = currentLanguage === "en" ? item.title : item.titleAR;
+        let overlayDescription = document.createElement("div");
+        overlayDescription.className = "gallery-overlay-description";
+        overlayDescription.innerHTML = currentLanguage === "en" ? item.description : item.descriptionAR;
+        overlay.appendChild(overlayIcon);
+        overlay.appendChild(overlayTitle);
+        overlay.appendChild(overlayDescription);
+        galleryItem.appendChild(img);
+        galleryItem.appendChild(overlay);
+        galleryItem.addEventListener("click", function () {
+            openLightbox(item.image);
+        });
+        galleryGrid.appendChild(galleryItem);
+    }
+}
+
+function openLightbox(imageSrc) {
+    let lightbox = document.getElementById("lightbox");
+    let lightboxImage = document.getElementById("lightboxImage");
+    if (lightbox && lightboxImage) {
+        lightboxImage.src = imageSrc;
+        lightbox.classList.add("active");
+    }
+}
+
+function closeLightbox() {
+    let lightbox = document.getElementById("lightbox");
+    if (lightbox) {
+        lightbox.classList.remove("active");
+    }
+}
+
+function initGalleryEvents() {
+    let closeBtn = document.getElementById("lightboxClose");
+    if (closeBtn) {
+        closeBtn.addEventListener("click", closeLightbox);
+    }
+    let lightbox = document.getElementById("lightbox");
+    if (lightbox) {
+        lightbox.addEventListener("click", function (event) {
+            if (event.target.id === "lightbox") {
+                closeLightbox();
             }
-
-            let newMessage = {
-                name: name,
-                email: email,
-                message: message,
-                date: new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString()
-            };
-
-            messages.push(newMessage);
-
-            localStorage.setItem("contactMessages", JSON.stringify(messages));
-
-            getSavedData();
-        }
-
-        function showSuccessSendMsg() {
-            document.getElementById("success-message").classList.add("show");
-
-            setTimeout(function() {
-                document.getElementById("success-message").classList.remove("show");
-            }, 3000);
-        }
-
-        function getSavedData() {
-            let messages = [];
-            
-            if (localStorage.getItem("contactMessages")) {
-                messages = JSON.parse(localStorage.getItem("contactMessages"));
-            }
-
-            let tbody = document.getElementById("messages-tbody");
-            tbody.innerHTML = "";
-
-            if (messages.length == 0) {
-                tbody.innerHTML = '<tr><td colspan="5" class="no-messages">No messages yet</td></tr>';
-            } else {
-                for (let i = 0; i < messages.length; i++) {
-                    let row = document.createElement("tr");
-                    
-                    row.innerHTML = `
-                        <td>${messages[i].name}</td>
-                        <td>${messages[i].email}</td>
-                        <td>${messages[i].message}</td>
-                        <td>${messages[i].date}</td>
-                        <td><button class="delete-button" onclick="deleteMessage(${i})">Delete</button></td>
-                    `;
-                    
-                    tbody.appendChild(row);
-                }
-            }
-        }
-
-        function deleteMessage(index) {
-            let messages = JSON.parse(localStorage.getItem("contactMessages"));
-            
-            messages.splice(index, 1);
-            
-            localStorage.setItem("contactMessages", JSON.stringify(messages));
-            
-            getSavedData();
-        }
-
-        window.onload = function() {
-            getSavedData();
-        };
+        });
+    }
+}
