@@ -715,8 +715,7 @@ window.addEventListener("load", function () {
 });
 
 document.getElementById("1").innerHTML ="Skillio"
-
-let textArray = {
+    let textArray = {
             title: "Login",
             emailLabel: "Email",
             passwordLabel: "Password",
@@ -731,7 +730,7 @@ let textArray = {
             errorMessage: "Incorrect email or password"
         };
 
-       
+      
         document.getElementById("login-title").textContent = textArray.title;
         document.getElementById("email-label").textContent = textArray.emailLabel;
         document.getElementById("password-label").textContent = textArray.passwordLabel;
@@ -748,6 +747,7 @@ let textArray = {
         function login() {
             let username = document.getElementById("login-username").value;
             let password = document.getElementById("login-password").value;
+            let gender = document.querySelector('input[name="gender"]:checked').value;
 
             document.getElementById("login-username").style.border = "2px solid var(--color-light-gray)";
             document.getElementById("login-password").style.border = "2px solid var(--color-light-gray)";
@@ -755,8 +755,8 @@ let textArray = {
             document.getElementById("login-password").style.background = "var(--color-white)";
             document.getElementById("error-message").classList.remove("show");
 
-            if (username == "raia" && password == "123") {
-                window.location = "profile.html";
+            if (username == "raia@gmail.com" && password == "123" && gender == "female") {
+                window.location = "index.html";
             } else {
                 document.getElementById("login-username").style.background = "var(--cta)";
                 document.getElementById("login-password").style.background = "var(--cta)";
@@ -771,5 +771,3 @@ let textArray = {
                 login();
             }
         });
-  
-

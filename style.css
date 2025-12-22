@@ -17,7 +17,7 @@
     --color-pink: #F3ABA3;
     --footer: #071e22;
     --error:#ff4444;
-    
+
  
     --shadow-dark: rgba(56, 74, 82, 0.2);
     --shadow-white: rgba(255, 255, 255, 0.7);
@@ -1633,12 +1633,12 @@ body::before {
 
 
         .login-page-wrapper {
-            background: linear-gradient(135deg, var(--color-secondary-light) 0%, var(--color-secondary) 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            margin: 130px 0;
         }
 
         .login-container {
@@ -1647,7 +1647,7 @@ body::before {
             border-radius: 30px;
             box-shadow: 0 20px 60px var(--shadow-dark);
             overflow: hidden;
-            max-width: 1000px;
+            max-width: 1350px;
             width: 100%;
         }
 
@@ -1677,7 +1677,7 @@ body::before {
         }
 
         .login-image-container img {
-            max-width: 100%;
+            max-width: 120%;
             height: auto;
             object-fit: contain;
         }
