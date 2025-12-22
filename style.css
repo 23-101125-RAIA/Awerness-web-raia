@@ -8,7 +8,7 @@
     --color-white: #fff;
     --color-secondary-light: #cbf3f0;
     --color-dark-gray: #232e33;
-    --color-medium-gray: #76848C;
+    --color-medium-gray: #585b5d;
     --color-dark: #263238;
     --color-white-dark: #232e33;
     --color-light-gray: #A9AAAA;
@@ -64,14 +64,14 @@ li {
 
 
 ::-webkit-scrollbar-track {
-    background-color: none;
+    background-color: var(--color-white);
 }
 
 
 ::-webkit-scrollbar-thumb {
     background-color: var(--color-primary);
     border-radius: 10px;
-    border: 2px solid var(--color-dark);
+
 }
 
 
@@ -1609,13 +1609,23 @@ body::before {
 
 .body-error{
     width: 100%;
-    height: 100vh;
+    height: auto;
      background: linear-gradient(135deg, var(--color-secondary-light) 0%, var(--color-secondary) 100%);
-}
 
+}
+.error-div{
+       width: 100%;
+    height: 100vh;
+    margin: 170px 0 0;
+         display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+}
 .error-img{
     width: 980px;
     height: auto;
+  
 }
 
 
