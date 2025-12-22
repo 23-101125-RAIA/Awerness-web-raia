@@ -715,7 +715,7 @@ window.addEventListener("load", function () {
 });
 
 document.getElementById("1").innerHTML ="Skillio"
-    let textArray = {
+        let textArray = {
             title: "Login",
             emailLabel: "Email",
             passwordLabel: "Password",
@@ -730,7 +730,6 @@ document.getElementById("1").innerHTML ="Skillio"
             errorMessage: "Incorrect email or password"
         };
 
-      
         document.getElementById("login-title").textContent = textArray.title;
         document.getElementById("email-label").textContent = textArray.emailLabel;
         document.getElementById("password-label").textContent = textArray.passwordLabel;
@@ -753,6 +752,7 @@ document.getElementById("1").innerHTML ="Skillio"
             document.getElementById("login-password").style.border = "2px solid var(--color-light-gray)";
             document.getElementById("login-username").style.background = "var(--color-white)";
             document.getElementById("login-password").style.background = "var(--color-white)";
+            document.getElementById("gender-section").classList.remove("error");
             document.getElementById("error-message").classList.remove("show");
 
             if (username == "raia@gmail.com" && password == "123" && gender == "female") {
@@ -762,6 +762,7 @@ document.getElementById("1").innerHTML ="Skillio"
                 document.getElementById("login-password").style.background = "var(--cta)";
                 document.getElementById("login-username").style.border = "2px solid #ff4444";
                 document.getElementById("login-password").style.border = "2px solid #ff4444";
+                document.getElementById("gender-section").classList.add("error");
                 document.getElementById("error-message").classList.add("show");
             }
         }
@@ -771,3 +772,5 @@ document.getElementById("1").innerHTML ="Skillio"
                 login();
             }
         });
+
+        

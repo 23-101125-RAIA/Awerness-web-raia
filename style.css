@@ -1734,6 +1734,12 @@ body::before {
         .gender-section {
             margin-bottom: 25px;
         }
+        .gender-section.error {
+    padding: 10px;
+    background: var(--cta);
+    border: 2px solid var(--error);
+    border-radius: 10px;
+}
 
         .gender-label {
             font-family: 'Poppins', sans-serif;
@@ -1880,5 +1886,206 @@ body::before {
 
         .error-message.show {
             display: block;
+        }
+
+    
+        .contact-page-wrapper {
+            background: linear-gradient(135deg, var(--color-secondary-light) 0%, var(--color-secondary) 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 48px;
+            color: var(--color-dark-gray);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .contact-form-section {
+            background: var(--color-white);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 20px 60px var(--shadow-dark);
+            margin-bottom: 50px;
+        }
+
+        .form-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 32px;
+            color: var(--color-dark-gray);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            color: var(--color-dark-gray);
+            margin-bottom: 8px;
+            font-weight: 600;
+            display: block;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--color-light-gray);
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: var(--color-primary);
+        }
+
+        .form-input.error,
+        .form-textarea.error {
+            border-color: #ff4444;
+            background: #ffebeb;
+        }
+
+        .error-message {
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            color: #ff4444;
+            margin-top: 5px;
+            display: none;
+            font-weight: 600;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            color: var(--color-white);
+            border: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(248, 193, 36, 0.4);
+        }
+
+        .success-message {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            text-align: center;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .messages-section {
+            background: var(--color-white);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 20px 60px var(--shadow-dark);
+        }
+
+        .messages-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 32px;
+            color: var(--color-dark-gray);
+            margin-bottom: 30px;
+        }
+
+        .messages-table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .messages-table thead {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+        }
+
+        .messages-table th {
+            padding: 15px;
+            text-align: left;
+            color: var(--color-white);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .messages-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--color-light-gray);
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            color: var(--color-medium-gray);
+        }
+
+        .messages-table tbody tr:hover {
+            background: var(--color-secondary-lighter);
+        }
+
+        .messages-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .no-messages {
+            text-align: center;
+            padding: 40px;
+            color: var(--color-medium-gray);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .delete-button {
+            background: var(--red);
+            color: var(--color-white);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .delete-button:hover {
+            background: var(--red);
+            transform: translateY(-2px);
         }
 
