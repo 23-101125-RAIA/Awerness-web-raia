@@ -43,3 +43,21 @@ function initLanguageToggle() {
         };
     }
 }
+
+function initThemeToggle() {
+    let themeToggle = document.getElementById("themeToggle");
+    if (themeToggle) {
+        themeToggle.onclick = function () {
+            document.body.classList.toggle("dark-mode");
+
+            let iconImg = themeToggle.querySelector("img");
+            if (iconImg) {
+                if (document.body.classList.contains("dark-mode")) {
+                    iconImg.src = "img/brightness.png";
+                } else {
+                    iconImg.src = "img/moon.png";
+                }
+            }
+        };
+    }
+}
