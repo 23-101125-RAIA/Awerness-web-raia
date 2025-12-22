@@ -505,3 +505,79 @@ function initSliderControls() {
         };
     }
 }
+
+let faqData = {
+    titleEN: "Questions About Skills & Mental Health",
+    titleAR: "أسئلة حول المهارات والصحة النفسية",
+    subtitleEN: "Learn how building skills, seeking support, and caring for your mind are connected.",
+    subtitleAR: "تعرّف كيف يرتبط بناء المهارات وطلب الدعم والاعتناء بعقلك ببعضها البعض.",
+    items: [
+        { questionEN: "How are personal growth and mental health connected?", questionAR: "كيف يرتبط النمو الشخصي بالصحة النفسية؟", answerEN: "Personal growth in skills—like learning to communicate, solve problems, and manage emotions—can reduce stress and build resilience.", answerAR: "النمو الشخصي في المهارات، مثل تعلّم التواصل وحلّ المشكلات وإدارة المشاعر، يمكن أن يقلّل الضغط ويبني المرونة النفسية." },
+        { questionEN: "What early signs should youth look out for?", questionAR: "ما العلامات المبكرة التي يجب أن ينتبه لها الشباب؟", answerEN: "Changes like constant tiredness, losing interest in things you usually enjoy, difficulty concentrating, or feeling hopeless for weeks.", answerAR: "تغيّرات مثل التعب المستمر، وفقدان الاهتمام بالأشياء التي كنت تستمتع بها، وصعوبة التركيز، أو الشعور باليأس لأسابيع." },
+        { questionEN: "Can building skills really improve my mood?", questionAR: "هل يمكن أن يحسّن بناء المهارات من مزاجي فعلاً؟", answerEN: "Yes. Learning and practicing new skills can give a sense of progress, purpose, and control, which are all protective for mental health.", answerAR: "نعم. تعلّم وممارسة مهارات جديدة يمنحك إحساسًا بالتقدّم والمعنى والتحكّم، وكلها عوامل تحمي الصحة النفسية." },
+        { questionEN: "Do I need experience to start growing my skills?", questionAR: "هل أحتاج إلى خبرة حتى أبدأ في تنمية مهاراتي؟", answerEN: "No. Personal growth starts with curiosity and small actions.", answerAR: "لا. يبدأ النمو الشخصي من الفضول وخطوات صغيرة." },
+        { questionEN: "Is this website a mental health service?", questionAR: "هل هذا الموقع خدمة علاج نفسي؟", answerEN: "No. This site shares educational information about skills and wellbeing and cannot replace professional support.", answerAR: "لا. يقدّم هذا الموقع معلومات تثقيفية حول المهارات والرفاه النفسي ولا يمكن أن يَحلّ محلّ الدعم من مختصين." },
+        { questionEN: "Who can I talk to if I am struggling?", questionAR: "مع من يمكنني التحدث إذا كنت أعاني؟", answerEN: "Start by speaking with someone you trust—like a parent, teacher, or school counselor.", answerAR: "ابدأ بالتحدّث مع شخص تثق به مثل أحد الوالدين أو معلّم أو مرشد في المدرسة." }
+    ]
+};
+
+function showFAQ() {
+    let titleEl = document.getElementById("faqTitle");
+    let subtitleEl = document.getElementById("faqSubtitle");
+    let listEl = document.getElementById("faqList");
+
+    if (titleEl) titleEl.innerHTML = currentLanguage === "en" ? faqData.titleEN : faqData.titleAR;
+    if (subtitleEl) subtitleEl.innerHTML = currentLanguage === "en" ? faqData.subtitleEN : faqData.subtitleAR;
+
+    if (listEl) {
+        let html = "";
+        for (let i = 0; i < faqData.items.length; i++) {
+            let item = faqData.items[i];
+            let question = currentLanguage === "en" ? item.questionEN : item.questionAR;
+            let answer = currentLanguage === "en" ? item.answerEN : item.answerAR;
+
+            html += `
+                <div class="faq-item">
+                    <div class="faq-question text-font">
+                        <span>${question}</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer text-font">
+                        <p>${answer}</p>
+                    </div>
+                </div>
+            `;
+        }
+        listEl.innerHTML = html;
+        setupFAQClicks();
+    }
+}
+
+function setupFAQClicks() {
+    let faqItems = document.querySelectorAll(".faq-item");
+
+    for (let i = 0; i < faqItems.length; i++) {
+        let question = faqItems[i].querySelector(".faq-question");
+
+        if (question) {
+            question.onclick = function () {
+                let item = this.parentElement;
+                let answer = item.querySelector(".faq-answer");
+                let icon = item.querySelector(".faq-icon");
+                let isOpen = answer.style.maxHeight;
+
+                let allAnswers = document.querySelectorAll(".faq-answer");
+                let allIcons = document.querySelectorAll(".faq-icon");
+                for (let j = 0; j < allAnswers.length; j++) {
+                    allAnswers[j].style.maxHeight = null;
+                    allIcons[j].textContent = "+";
+                }
+
+                if (!isOpen) {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    icon.textContent = "−";
+                }
+            };
+        }
+    }
+}
