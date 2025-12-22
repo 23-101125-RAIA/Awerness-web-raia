@@ -650,3 +650,48 @@ function initScrollTop() {
     }
 }
 
+
+function updateAllText() {
+    let text = currentLanguage === "en" ? englishText : arabicText;
+
+    let headerLogo = document.getElementById("headerLogo");
+    if (headerLogo) headerLogo.innerHTML = text.headerLogo;
+
+    let langToggle = document.getElementById("langToggle");
+    if (langToggle) langToggle.innerHTML = text.langToggle;
+
+    let loginbtn = document.getElementById("loginbtn");
+    if (loginbtn) loginbtn.innerHTML = text.loginbtn;
+
+    let heroTitle = document.getElementById("heroTitle");
+    if (heroTitle) heroTitle.innerHTML = text.heroTitle;
+
+    let heroDescription = document.getElementById("heroDescription");
+    if (heroDescription) heroDescription.innerHTML = text.heroDescription;
+
+    let heroButton = document.getElementById("heroButton");
+    if (heroButton) heroButton.innerHTML = text.heroButton;
+
+    let principlesTitle = document.getElementById("principlesTitle");
+    if (principlesTitle) principlesTitle.innerHTML = text.principlesTitle;
+
+    let principlesSubtitle = document.getElementById("principlesSubtitle");
+    if (principlesSubtitle) principlesSubtitle.innerHTML = text.principlesSubtitle;
+
+    let cardsSliderTitle = document.getElementById("cardsSliderTitle");
+    if (cardsSliderTitle) cardsSliderTitle.innerHTML = text.cardsSliderTitle;
+
+    let cardsSliderSubtitle = document.getElementById("cardsSliderSubtitle");
+    if (cardsSliderSubtitle) cardsSliderSubtitle.innerHTML = text.cardsSliderSubtitle;
+
+    showNav();
+    showPrinciples();
+    showCaseStudy();
+    showTestimonials();
+    showSecIndex();
+    showSecCards();
+    showImageSlider();
+    showFAQ();
+    showFooter();
+}
+
