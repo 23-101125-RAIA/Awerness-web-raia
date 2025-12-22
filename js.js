@@ -695,3 +695,24 @@ function updateAllText() {
     showFooter();
 }
 
+
+window.addEventListener("load", function () {
+ 
+    setTimeout(function () {
+        let preloader = document.getElementById("preloader");
+        if (preloader) {
+            preloader.classList.add("hidden");
+        }
+    }, 4000);
+
+  
+    initLanguageToggle();
+    initThemeToggle();
+    initScrollTop();
+    initSliderControls();
+    initFacts();
+    updateAllText();
+});
+
+
+
