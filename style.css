@@ -59,7 +59,7 @@ li {
 }
 
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 10px;
 }
 
 
@@ -749,16 +749,18 @@ body::before {
 
 .sec-stat-top-left {
     top: 30px;
-    left: 30px;
+    left: 10px;
     background: var(--color-dark-gray);
     color: var(--color-white);
+    width: 306px;
 }
 
 .sec-stat-bottom-right {
-    bottom: -10px;
-    right: -210px;
+    bottom: -30px;
+    right: -130px;
     background: var(--color-pink);
     color: var(--color-white);
+    width: 306px;
 }
 
 .sec-stat-number-large {
