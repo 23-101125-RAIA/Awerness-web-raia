@@ -90,3 +90,109 @@ body {
     transition: background-color 0.3s, color 0.3s;
     overflow-x: hidden;
 }
+
+
+.mode {
+    width: 37px;
+    padding: 5px;
+    height: auto;
+}
+
+.title-font {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+}
+
+.text-font {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 20% 50%, var(--shadow-dark-bg) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, var(--shadow-gray-bg) 0%, transparent 50%);
+    animation: backgroundShift 20s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes backgroundShift {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, 30px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-secondary-lighter) 0%, var(--color-secondary) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader {
+    text-align: center;
+}
+
+.loader .Light {
+
+    width: 200px;
+    height: auto;
+
+}
+
+.loader p {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 600;
+    margin-top: 20px;
+    color: var(--color-dark-gray);
+    font-size: 24px;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
