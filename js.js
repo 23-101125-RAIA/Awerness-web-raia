@@ -582,3 +582,54 @@ function setupFAQClicks() {
     }
 }
 
+
+let footerData = {
+    logoEN: "Skillio.",
+    logoAR: "Skillio.",
+    descEN: "Raising awareness about how personal growth in skills, supportive environments, and timely help can protect youth mental health.",
+    descAR: "نرفع الوعي بأهمية نمو المهارات الشخصية والبيئات الداعمة وطلب المساعدة في الوقت المناسب لحماية الصحة النفسية للشباب.",
+    columns: [
+        { headingEN: "Quick Links", headingAR: "روابط سريعة", links: [{ textEN: "Home", textAR: "الرئيسية", href: "#home" }, { textEN: "Programs", textAR: "البرامج", href: "#services" }, { textEN: "Resources", textAR: "الموارد", href: "#resources" }, { textEN: "Get Involved", textAR: "انضم إلينا", href: "#contact" }] },
+        { headingEN: "Learning Areas", headingAR: "مجالات التعلم", links: [{ textEN: "Creative Arts", textAR: "الفنون الإبداعية", href: "#" }, { textEN: "Digital Skills", textAR: "المهارات الرقمية", href: "#" }, { textEN: "Leadership", textAR: "القيادة", href: "#" }, { textEN: "Entrepreneurship", textAR: "ريادة الأعمال", href: "#" }] },
+        { headingEN: "Resources", headingAR: "الموارد", links: [{ textEN: "Course Library", textAR: "مكتبة الدورات", href: "#" }, { textEN: "Success Stories", textAR: "قصص النجاح", href: "#" }, { textEN: "FAQs", textAR: "الأسئلة الشائعة", href: "#" }, { textEN: "Partner With Us", textAR: "شراكة معنا", href: "#" }] }
+    ]
+};
+
+function showFooter() {
+    let contentEl = document.getElementById("footerContent");
+    let copyrightEl = document.getElementById("footerCopyright");
+
+    let text = currentLanguage === "en" ? englishText : arabicText;
+
+    if (copyrightEl) copyrightEl.innerHTML = text.footerCopyright;
+
+    if (contentEl) {
+        let logo = currentLanguage === "en" ? footerData.logoEN : footerData.logoAR;
+        let desc = currentLanguage === "en" ? footerData.descEN : footerData.descAR;
+
+        let html = `
+            <div class="footer-column">
+                <h4 class="footer-logo title-font">${logo}</h4>
+                <p class="footer-description text-font">${desc}</p>
+            </div>
+        `;
+
+        for (let i = 0; i < footerData.columns.length; i++) {
+            let col = footerData.columns[i];
+            let heading = currentLanguage === "en" ? col.headingEN : col.headingAR;
+
+            html += `<div class="footer-column"><h4 class="footer-heading title-font">${heading}</h4><ul class="footer-links">`;
+
+            for (let j = 0; j < col.links.length; j++) {
+                let link = col.links[j];
+                let linkText = currentLanguage === "en" ? link.textEN : link.textAR;
+                html += `<li><a href="${link.href}" class="text-font">${linkText}</a></li>`;
+            }
+
+            html += `</ul></div>`;
+        }
+
+        contentEl.innerHTML = html;
+    }
+}
+
