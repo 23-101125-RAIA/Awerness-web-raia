@@ -633,3 +633,20 @@ function showFooter() {
     }
 }
 
+function initScrollTop() {
+    let scrollTopBtn = document.getElementById("scrollTopBtn");
+    if (scrollTopBtn) {
+        window.onscroll = function () {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add("visible");
+            } else {
+                scrollTopBtn.classList.remove("visible");
+            }
+        };
+
+        scrollTopBtn.onclick = function () {
+            window.scrollTo(0, 0);
+        };
+    }
+}
+
