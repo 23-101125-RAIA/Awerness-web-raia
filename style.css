@@ -1562,6 +1562,8 @@ button:hover {
 .footer-main {
     background: var(--footer);
     color: var(--color-primary);
+    position: relative;
+    z-index: 2;
 }
 
 
@@ -1953,7 +1955,7 @@ button:hover {
 
 .container1 {
     max-width: 1200px;
-    margin: 170px auto;
+    margin: 0 auto ;
 }
 
 .page-title {
@@ -1961,7 +1963,6 @@ button:hover {
     font-size: 48px;
     color: var(--color-dark-gray);
     text-align: center;
-    margin-bottom: 50px;
 }
 
 .contact-form-section {
@@ -1969,7 +1970,7 @@ button:hover {
     border-radius: 24px;
     padding: 50px;
     box-shadow: 0 20px 60px var(--shadow-dark);
-    margin-bottom: 50px;
+  margin: 254px auto 100px  ;
 }
 
 .form-title {
