@@ -18,7 +18,8 @@
     --footer: #071e22;
     --error: #ff4444;
     --green: #28a745;
-    --box: #rgba(0, 0, 0, 0.9);
+    --box: rgba(0, 0, 0, 0.9);
+    --boxx: rgba(0, 0, 0, 0.5);
 
     --overlay: rgba(35, 46, 51, 0.9);
     --shadow-dark: rgba(56, 74, 82, 0.2);
@@ -2316,7 +2317,7 @@ button:hover {
     max-width: 100%;
     max-height: 90vh;
     border-radius: 12px;
-    box-shadow: 0 20px 60px var(--box);
+    box-shadow: 0 20px 60px var(--boxx);
     cursor: zoom-in;
     transition: transform 0.3s ease;
 }
@@ -2341,6 +2342,7 @@ button:hover {
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
+    margin-bottom: 50px;
 }
 
 .lightbox-close:hover {
