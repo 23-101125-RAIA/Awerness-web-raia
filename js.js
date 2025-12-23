@@ -825,7 +825,8 @@ function initLoginKeypress() {
 }
 
 let contactTextEN = {
-    pageTitle: "Contact Us",
+    pageTitle: "CONTACT",
+    pageSubtitle: "CONTACT WITH US",
     formTitle: "Send us a message",
     nameLabel: "Name",
     emailLabel: "Email",
@@ -842,6 +843,7 @@ let contactTextEN = {
 
 let contactTextAR = {
     pageTitle: "اتصل بنا",
+    pageSubtitle: "تواصل معنا",
     formTitle: "أرسل لنا رسالة",
     nameLabel: "الاسم",
     emailLabel: "البريد الإلكتروني",
@@ -861,6 +863,7 @@ function showContactText() {
     let text = currentLanguage === "en" ? contactTextEN : contactTextAR;
     document.getElementById("1").innerHTML = "Skillio";
     document.getElementById("page-title").innerHTML = text.pageTitle;
+    document.getElementById("page-subtitle").innerHTML = text.pageSubtitle;
     document.getElementById("form-title").innerHTML = text.formTitle;
     document.getElementById("name-label").innerHTML = text.nameLabel;
     document.getElementById("email-label").innerHTML = text.emailLabel;
@@ -959,9 +962,6 @@ function deleteMessage(index) {
 }
 
 let galleryTextEN = {
-    heroTitle: "Discover Skills That Transform Lives",
-    heroDescription: "Building mental wellness through creative expression and skill development. Explore activities that nurture your mind, body, and spirit.",
-    heroButton: "Explore Skills",
     galleryTitle: "Skills Gallery",
     gallerySubtitle: "Discover diverse activities that promote mental health, self-expression, and personal growth. Each skill offers a unique path to wellness and creativity.",
     supportTitle: "You're Not Alone on This Journey",
@@ -970,9 +970,6 @@ let galleryTextEN = {
 };
 
 let galleryTextAR = {
-    heroTitle: "اكتشف مهارات تغير الحياة",
-    heroDescription: "بناء الصحة النفسية من خلال التعبير الإبداعي وتطوير المهارات. استكشف أنشطة تغذي عقلك وجسمك وروحك.",
-    heroButton: "استكشف المهارات",
     galleryTitle: "معرض المهارات",
     gallerySubtitle: "اكتشف أنشطة متنوعة تعزز الصحة النفسية والتعبير عن الذات والنمو الشخصي. كل مهارة تقدم طريقاً فريداً للصحة والإبداع.",
     supportTitle: "لست وحدك في هذه الرحلة",
@@ -981,23 +978,18 @@ let galleryTextAR = {
 };
 
 let galleryItems = [
-    { title: "Art Therapy", titleAR: "العلاج بالفن", description: "Express yourself through painting and creative visual arts", descriptionAR: "عبر عن نفسك من خلال الرسم والفنون البصرية الإبداعية", image: "img/Bird on a wire-cuate.png" },
-    { title: "Culinary Skills", titleAR: "مهارات الطهي", description: "Discover mindfulness and creativity through cooking", descriptionAR: "اكتشف اليقظة والإبداع من خلال الطبخ", image: "img/m.png" },
-    { title: "Dance & Movement", titleAR: "الرقص والحركة", description: "Release stress and express emotions through dance", descriptionAR: "تخلص من التوتر وعبر عن مشاعرك من خلال الرقص", image: "img/m.png" },
-    { title: "Music & Sound", titleAR: "الموسيقى والصوت", description: "Heal and connect through musical expression", descriptionAR: "تعافى وتواصل من خلال التعبير الموسيقي", image: "img/m.png" },
-    { title: "Sports & Fitness", titleAR: "الرياضة واللياقة", description: "Build confidence and reduce anxiety through physical activity", descriptionAR: "ابنِ الثقة وقلل القلق من خلال النشاط البدني", image: "img/m.png" },
-    { title: "Creative Writing", titleAR: "الكتابة الإبداعية", description: "Process emotions and tell your story through words", descriptionAR: "عالج مشاعرك واحكِ قصتك من خلال الكلمات", image: "img/m.png" },
-    { title: "Gardening & Nature", titleAR: "البستنة والطبيعة", description: "Find peace and grounding through working with plants", descriptionAR: "اعثر على السلام والتوازن من خلال العمل مع النباتات", image: "img/m.png" },
-    { title: "Crafts & DIY", titleAR: "الحرف اليدوية", description: "Practice mindfulness through hands-on creative projects", descriptionAR: "مارس اليقظة من خلال المشاريع الإبداعية العملية", image: "img/m.png" }
+    { title: "Cooking", titleAR: "الطبخ", description: "Discover mindfulness and creativity through cooking", descriptionAR: "اكتشف اليقظة والإبداع من خلال الطبخ", image: "img/cook.webp" },
+    { title: "Dancing", titleAR: "الرقص", description: "Release stress and express emotions through dance", descriptionAR: "تخلص من التوتر وعبر عن مشاعرك من خلال الرقص", image: "img/m4.jpg" },
+    { title: "Art", titleAR: "الفن", description: "Express yourself through painting and creative visual arts", descriptionAR: "عبر عن نفسك من خلال الرسم والفنون البصرية الإبداعية", image: "img/m1.webp" },
+    { title: "Scattering", titleAR: "التشتت", description: "Find focus amidst chaos", descriptionAR: "ابحث عن التركيز وسط الفوضى", image: "img/m2.webp" },
+    { title: "Group Communication", titleAR: "التواصل الجماعي", description: "Build connections and share experiences", descriptionAR: "بناء العلاقات ومشاركة الخبرات", image: "img/m3.jpg" },
+    { title: "Meditation", titleAR: "التأمل", description: "Find inner peace and clarity", descriptionAR: "اعثر على السلام الداخلي والوضوح", image: "img/m8.webp" }
 ];
 
 function showGalleryText() {
-    if (!document.getElementById("heroGalleryTitle")) return;
+    if (!document.getElementById("galleryMainTitle")) return;
     let text = currentLanguage === "en" ? galleryTextEN : galleryTextAR;
     document.getElementById("1").innerHTML = "Skillio";
-    document.getElementById("heroGalleryTitle").innerHTML = text.heroTitle;
-    document.getElementById("heroGalleryDescription").innerHTML = text.heroDescription;
-    document.getElementById("heroGalleryButton").innerHTML = text.heroButton;
     document.getElementById("galleryMainTitle").innerHTML = text.galleryTitle;
     document.getElementById("galleryMainSubtitle").innerHTML = text.gallerySubtitle;
     document.getElementById("supportWellnessTitle").innerHTML = text.supportTitle;
