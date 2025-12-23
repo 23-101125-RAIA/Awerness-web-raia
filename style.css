@@ -593,6 +593,13 @@ button:hover {
 }
 
 
+.hero-wave5 {
+    position: absolute;
+    bottom: 103px;
+    left: -40px;
+    right: 0;
+    color: var(--color-white);
+    fill: currentColor;}
 .sec-principles-section {
     background: var(--color-white);
     padding: 0 0;
@@ -2151,7 +2158,8 @@ button:hover {
 
 .gallery-container {
     width: 100%;
-    padding: 100px;
+    padding: 50px;
+       background: var(--color-white);
 }
 
 .gallery-header {

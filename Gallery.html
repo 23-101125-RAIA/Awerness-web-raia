@@ -14,7 +14,7 @@
         rel="stylesheet">
 </head>
 
-<body >
+<body id="page-gallery">
     <div class="preloader" id="preloader">
         <div class="loader">
             <img class="Light" src="img/Light Bulb.gif">
@@ -29,28 +29,33 @@
             </div>
             <ul class="nav-center" id="headerNavLinks"></ul>
             <div class="nav-right">
-                <button class="theme-toggle" id="themeToggle"><img src="img/moon.png" class="mode"
-                        alt="Switch to dark mode"></button>
+                <button class="theme-toggle" id="themeToggle"><img src="img/moon.png" class="mode"></button>
                 <button class="lang-toggle text-font" id="langToggle"></button>
                 <a href="Login.html" class="btn1-hero text-font" id="loginbtn"></a>
             </div>
         </div>
     </nav>
     <section id="gallery" class="gallery-section-wrapper">
-     
-            <section class="support-wellness-section">
-                <div class="support-wellness-container">
-                    <div class="support-wellness-content">
-                        <h2 class="support-wellness-title title-font" id="supportWellnessTitle"></h2>
-                        <p class="support-wellness-text text-font" id="supportWellnessText"></p>
-                        <a href="#contact" class="btn-hero text-font" id="btnSupportWellness"></a>
-                    </div>
-                    <div class="support-wellness-illustration">
-                        <img src="img/Bird on a wire-cuate.png">
-                    </div>
+
+        <section class="support-wellness-section">
+            <div class="support-wellness-container">
+                <div class="support-wellness-content">
+                    <h2 class="support-wellness-title title-font" id="supportWellnessTitle"></h2>
+                    <p class="support-wellness-text text-font" id="supportWellnessText"></p>
+                    <a href="#contact" class="btn-hero text-font" id="btnSupportWellness"></a>
                 </div>
-            </section>
-   <div class="gallery-container">
+                <div class="support-wellness-illustration">
+                    <img src="img/Bird on a wire-cuate.png">
+                </div>
+            </div>
+        </section>
+        <div class="hero-wave5">
+            <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" />
+            </svg>
+        </div>
+        <div class="gallery-container">
             <div class="gallery-header">
                 <h2 class="gallery-main-title title-font" id="galleryMainTitle"></h2>
                 <p class="gallery-main-subtitle text-font" id="galleryMainSubtitle"></p>
@@ -78,6 +83,7 @@
     </footer>
     <button id="scrollTopBtn" class="scroll-top-btn"></button>
 
+    <script src="localStorage.js"></script>
     <script src="js.js"></script>
 </body>
 

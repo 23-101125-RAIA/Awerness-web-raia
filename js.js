@@ -54,18 +54,19 @@ let navItems = [
 function showNav() {
     let container = document.getElementById("headerNavLinks");
     if (!container) return;
-    let currentPage = window.location.pathname.split("/").pop().toLowerCase();
-    if (currentPage === "" || currentPage === "index.html") {
-        currentPage = "index.html";
-    }
+
     let html = "";
+    let pageId = document.body.id;
+
     for (let i = 0; i < navItems.length; i++) {
         let text = currentLanguage === "en" ? navItems[i].textEN : navItems[i].textAR;
-        let linkPage = navItems[i].link.toLowerCase();
         let activeClass = "";
-        if (currentPage === linkPage) {
-            activeClass = " active";
-        }
+
+        if (pageId === "page-home" && navItems[i].link === "index.html") activeClass = " active";
+        if (pageId === "page-gallery" && navItems[i].link === "gallery.html") activeClass = " active";
+        if (pageId === "page-center" && navItems[i].link === "center.html") activeClass = " active";
+        if (pageId === "page-contact" && navItems[i].link === "contact.html") activeClass = " active";
+
         html += '<li><a href="' + navItems[i].link + '" class="text-font' + activeClass + '">' + text + '</a></li>';
     }
     container.innerHTML = html;
@@ -148,7 +149,7 @@ function showPrinciples() {
         html += `
             <div class="sec-principle-card">
                 <div class="sec-principle-icon">
-                    <img src="${principles[i].icon}" alt="Icon" class="sec-icon-img">
+                    <img src="${principles[i].icon}" class="sec-icon-img">
                 </div>
                 <h3 class="sec-principle-title">${title}</h3>
                 <p class="sec-principle-text">${text}</p>
@@ -418,7 +419,7 @@ function showSecCards() {
 
         html += `
             <div class="sec-vertical-card sec-card-${i + 1}">
-                <img src="${secCards[i].image}" alt="Card" class="sec-vertical-card-img">
+                <img src="${secCards[i].image}" class="sec-vertical-card-img">
                 <div class="sec-card-overlay">
                     <h3 class="sec-card-overlay-title">${title}</h3>
                     <p class="sec-card-overlay-text">
@@ -945,52 +946,13 @@ function validateForm(event) {
     }
 }
 
-function saveFormData(name, email, message) {
-    let messages = [];
-    if (localStorage.getItem("contactMessages")) {
-        messages = JSON.parse(localStorage.getItem("contactMessages"));
-    }
-    let newMessage = {
-        name: name,
-        email: email,
-        message: message,
-        date: new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString()
-    };
-    messages.push(newMessage);
-    localStorage.setItem("contactMessages", JSON.stringify(messages));
-}
+
 
 function showSuccessSendMsg() {
     document.getElementById("success-message").classList.add("show");
     setTimeout(function () {
         document.getElementById("success-message").classList.remove("show");
     }, 3000);
-}
-
-function getSavedData() {
-    let tbody = document.getElementById("messages-tbody");
-    if (!tbody) return;
-    let messages = [];
-    if (localStorage.getItem("contactMessages")) {
-        messages = JSON.parse(localStorage.getItem("contactMessages"));
-    }
-    tbody.innerHTML = "";
-    if (messages.length == 0) {
-        tbody.innerHTML = '<tr><td colspan="5" class="no-messages">No messages yet</td></tr>';
-    } else {
-        for (let i = 0; i < messages.length; i++) {
-            let row = document.createElement("tr");
-            row.innerHTML = '<td>' + messages[i].name + '</td><td>' + messages[i].email + '</td><td>' + messages[i].message + '</td><td>' + messages[i].date + '</td><td><button class="delete-button" onclick="deleteMessage(' + i + ')">Delete</button></td>';
-            tbody.appendChild(row);
-        }
-    }
-}
-
-function deleteMessage(index) {
-    let messages = JSON.parse(localStorage.getItem("contactMessages"));
-    messages.splice(index, 1);
-    localStorage.setItem("contactMessages", JSON.stringify(messages));
-    getSavedData();
 }
 
 let galleryTextEN = {
@@ -1040,7 +1002,6 @@ function loadGallery() {
         galleryItem.className = "gallery-item";
         let img = document.createElement("img");
         img.src = item.image;
-        img.alt = currentLanguage === "en" ? item.title : item.titleAR;
         img.className = "gallery-item-img";
         let overlay = document.createElement("div");
         overlay.className = "gallery-overlay";
