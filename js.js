@@ -2,7 +2,7 @@
 let currentLanguage = "en";
 
 let englishText = {
-    headerLogo: "Skillio.",
+    headerLogo: "Glow Up.",
     langToggle: "EN",
     loginbtn: " Login",
     heroTitle: "Growing Your Skills, Protecting Your Mind",
@@ -11,7 +11,7 @@ let englishText = {
     testimonialsTitle: "Real Youth Stories: Skills & Wellbeing",
     sliderSectionTitle: "Explore Skill Paths",
     sliderSectionSubtitle: "See real moments where young people explored different skills, built confidence, and supported their mental health.",
-    footerCopyright: "© 2024 Skillio. All rights reserved. | This site is educational and not a replacement for professional mental health care.",
+    footerCopyright: "© 2024 Glow Up. All rights reserved. | This site is educational and not a replacement for professional mental health care.",
     principlesTitle: "Core Principles",
     principlesSubtitle: "Our mission is built on three fundamental principles that guide youth skill development and empowerment.",
     cardsSliderTitle: "Why Prioritize Skill Development?",
@@ -19,7 +19,7 @@ let englishText = {
 };
 
 let arabicText = {
-    headerLogo: "Skillio.",
+    headerLogo: "Glow Up.",
     langToggle: "AR",
     loginbtn: "تسجيل الدخول",
     heroTitle: "نمو مهاراتك يحمي صحتك النفسية",
@@ -635,8 +635,8 @@ function setupFAQClicks() {
 
 
 let footerData = {
-    logoEN: "Skillio.",
-    logoAR: "Skillio.",
+    logoEN: "Glow Up.",
+    logoAR: "Glow Up.",
     descEN: "Raising awareness about how personal growth in skills, supportive environments, and timely help can protect youth mental health.",
     descAR: "نرفع الوعي بأهمية نمو المهارات الشخصية والبيئات الداعمة وطلب المساعدة في الوقت المناسب لحماية الصحة النفسية للشباب.",
     columns: [
@@ -743,7 +743,9 @@ function updateAllText() {
     showSecCards();
     showImageSlider();
     showFAQ();
+    showFAQ();
     showFooter();
+    document.getElementById("1").innerHTML = "Glow Up.";
 }
 
 
@@ -781,7 +783,7 @@ window.addEventListener("load", function () {
 function showLoginText() {
     if (!document.getElementById("login-title")) return;
     let text = currentLanguage === "en" ? loginTextEN : loginTextAR;
-    document.getElementById("1").innerHTML = "Skillio";
+    document.getElementById("1").innerHTML = "Glow Up";
     document.getElementById("login-title").innerHTML = text.title;
     document.getElementById("email-label").innerHTML = text.emailLabel;
     document.getElementById("password-label").innerHTML = text.passwordLabel;
@@ -896,7 +898,7 @@ let contactTextAR = {
 function showContactText() {
     if (!document.getElementById("form-title")) return;
     let text = currentLanguage === "en" ? contactTextEN : contactTextAR;
-    document.getElementById("1").innerHTML = "Skillio";
+    document.getElementById("1").innerHTML = "Glow Up";
     document.getElementById("form-title").innerHTML = text.formTitle;
     document.getElementById("name-label").innerHTML = text.nameLabel;
     document.getElementById("email-label").innerHTML = text.emailLabel;
@@ -983,7 +985,7 @@ let galleryItems = [
 function showGalleryText() {
     if (!document.getElementById("galleryMainTitle")) return;
     let text = currentLanguage === "en" ? galleryTextEN : galleryTextAR;
-    document.getElementById("1").innerHTML = "Skillio";
+    document.getElementById("1").innerHTML = "Glow Up";
     document.getElementById("galleryMainTitle").innerHTML = text.galleryTitle;
     document.getElementById("galleryMainSubtitle").innerHTML = text.gallerySubtitle;
     document.getElementById("supportWellnessTitle").innerHTML = text.supportTitle;

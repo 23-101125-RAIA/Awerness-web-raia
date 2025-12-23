@@ -8,7 +8,7 @@
     --color-white: #fff;
     --color-secondary-light: #cbf3f0;
     --color-dark-gray: #232e33;
-    --color-medium-gray: #585b5d;
+    --color-medium-gray: #7f8183;
     --color-dark: #263238;
     --color-white-dark: #232e33;
     --color-light-gray: #A9AAAA;
@@ -1601,7 +1601,7 @@ button:hover {
 }
 
 .footer-links a {
-    color: rgba(255, 255, 255, 0.7);
+    color:var(--color-medium-gray); ;
     text-decoration: none;
     font-size: 14px;
     transition: all 0.3s;
@@ -1630,7 +1630,7 @@ button:hover {
     width: 50px;
     height: 50px;
     background: var(--color-primary);
-    color: var(--color-gray-dark);
+    color: var(--color-off-white);
     border: none;
     border-radius: 50%;
     font-size: 24px;
@@ -2193,7 +2193,7 @@ button:hover {
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* 3 images per row */
+
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto 80px;
