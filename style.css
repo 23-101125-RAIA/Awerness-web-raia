@@ -18,7 +18,7 @@
     --footer: #071e22;
     --error: #ff4444;
     --green: #28a745;
-    --box: #rgba(0, 0, 0, 0.5);
+    --box: #rgba(0, 0, 0, 0.9);
 
     --overlay: rgba(35, 46, 51, 0.9);
     --shadow-dark: rgba(56, 74, 82, 0.2);
@@ -2273,7 +2273,7 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: var(--box);
     display: none;
     justify-content: center;
     align-items: center;

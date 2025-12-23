@@ -370,8 +370,12 @@ let secCards = [
         titleAR: "عادات النمو الشخصي",
         textEN: "Simple daily routines like journaling, movement, and reflection that support your mood and focus.",
         textAR: "عوائد يومية بسيطة مثل الكتابة، والحركة، والتأمل الذاتي تدعم المزاج والتركيز.",
-        buttonEN: "Learn More →",
-        buttonAR: "اعرف المزيد ←"
+        moreEN: "Building these habits early creates a foundation for lifelong resilience. Consistently practicing gratitude or mindfulness can rewire the brain to handle stress better.",
+        moreAR: "تكوين هذه العادات مبكراً يبني أساساً للمرونة مدى الحياة. ممارسة الامتنان أو اليقظة بانتظام يمكن أن تعيد تشكيل الدماغ للتعامل مع التوتر بشكل أفضل.",
+        buttonEN: "Read More",
+        buttonAR: "اقرأ المزيد",
+        lessEN: "Read Less",
+        lessAR: "اقرأ أقل"
     },
     {
         image: "img/m.png",
@@ -379,8 +383,12 @@ let secCards = [
         titleAR: "مهارات للدراسة والعمل",
         textEN: "Planning, problem‑solving, and digital skills that lower worry about the future and improve opportunities.",
         textAR: "مهارات التخطيط وحلّ المشكلات والمهارات الرقمية التي تقلّل القلق بشأن المستقبل وتحسّن الفرص.",
-        buttonEN: "Learn More →",
-        buttonAR: "اعرف المزيد ←"
+        moreEN: "Developing organizational skills reduces academic anxiety. Learning to break complex tasks into smaller steps is a key skill for both school success and future career adaptability.",
+        moreAR: "تطوير المهارات التنظيمية يقلل من القلق الدراسي. تعلم تقسيم المهام المعقدة إلى خطوات أصغر هو مهارة أساسية للنجاح المدرسي والتكيف المهني في المستقبل.",
+        buttonEN: "Read More",
+        buttonAR: "اقرأ المزيد",
+        lessEN: "Read Less",
+        lessAR: "اقرأ أقل"
     },
     {
         image: "img/b.png",
@@ -388,8 +396,12 @@ let secCards = [
         titleAR: "مجتمعات داعمة",
         textEN: "Clubs and safe spaces where young people practice skills together and feel less alone.",
         textAR: "أندية ومساحات آمنة يمارس فيها الشباب المهارات معًا ويشعرون فيها بقدر أقل من الوحدة.",
-        buttonEN: "Learn More →",
-        buttonAR: "اعرف المزيد ←"
+        moreEN: "Social connection is a powerful buffer against depression. Being part of a group with shared interests helps validate feelings and provides a safety net during tough times.",
+        moreAR: "التواصل الاجتماعي هو حاجز قوي ضد الاكتئاب. أن تكون جزءاً من مجموعة ذات اهتمامات مشتركة يساعد في التحقق من المشاعر ويوفر شبكة أمان خلال الأوقات الصعبة.",
+        buttonEN: "Read More",
+        buttonAR: "اقرأ المزيد",
+        lessEN: "Read Less",
+        lessAR: "اقرأ أقل"
     }
 ];
 
@@ -401,20 +413,46 @@ function showSecCards() {
     for (let i = 0; i < secCards.length; i++) {
         let title = currentLanguage === "en" ? secCards[i].titleEN : secCards[i].titleAR;
         let text = currentLanguage === "en" ? secCards[i].textEN : secCards[i].textAR;
-        let button = currentLanguage === "en" ? secCards[i].buttonEN : secCards[i].buttonAR;
+        let moreText = currentLanguage === "en" ? secCards[i].moreEN : secCards[i].moreAR;
+        let buttonText = currentLanguage === "en" ? secCards[i].buttonEN : secCards[i].buttonAR;
 
         html += `
             <div class="sec-vertical-card sec-card-${i + 1}">
                 <img src="${secCards[i].image}" alt="Card" class="sec-vertical-card-img">
                 <div class="sec-card-overlay">
                     <h3 class="sec-card-overlay-title">${title}</h3>
-                    <p class="sec-card-overlay-text">${text}</p>
-                    <button class="sec-read-more-btn">${button}</button>
+                    <p class="sec-card-overlay-text">
+                        ${text}
+                        <span class="more-text" id="more-${i}" style="display:none; margin-top: 10px; display: block; height: 0; overflow: hidden; opacity: 0; transition: all 0.3s;">${moreText}</span>
+                    </p>
+                    <button class="sec-read-more-btn" onclick="toggleCardReadMore(${i}, this)">${buttonText}</button>
                 </div>
             </div>
         `;
     }
     container.innerHTML = html;
+}
+
+function toggleCardReadMore(index, btn) {
+    let moreSpan = document.getElementById(`more-${index}`);
+    let data = secCards[index];
+    let isEnglish = currentLanguage === "en";
+
+    if (moreSpan.style.height === "0px" || moreSpan.style.height === "" || moreSpan.style.height === "0") {
+        moreSpan.style.display = "block";
+        setTimeout(() => {
+            moreSpan.style.height = "auto";
+            moreSpan.style.opacity = "1";
+        }, 10);
+        btn.innerHTML = isEnglish ? data.lessEN : data.lessAR;
+    } else {
+        moreSpan.style.height = "0";
+        moreSpan.style.opacity = "0";
+        setTimeout(() => {
+            moreSpan.style.display = "none";
+        }, 300);
+        btn.innerHTML = isEnglish ? data.buttonEN : data.buttonAR;
+    }
 }
 
 let currentSliderIndex = 0;
@@ -825,8 +863,6 @@ function initLoginKeypress() {
 }
 
 let contactTextEN = {
-    pageTitle: "CONTACT",
-    pageSubtitle: "CONTACT WITH US",
     formTitle: "Send us a message",
     nameLabel: "Name",
     emailLabel: "Email",
@@ -842,8 +878,6 @@ let contactTextEN = {
 };
 
 let contactTextAR = {
-    pageTitle: "اتصل بنا",
-    pageSubtitle: "تواصل معنا",
     formTitle: "أرسل لنا رسالة",
     nameLabel: "الاسم",
     emailLabel: "البريد الإلكتروني",
@@ -859,11 +893,9 @@ let contactTextAR = {
 };
 
 function showContactText() {
-    if (!document.getElementById("page-title")) return;
+    if (!document.getElementById("form-title")) return;
     let text = currentLanguage === "en" ? contactTextEN : contactTextAR;
     document.getElementById("1").innerHTML = "Skillio";
-    document.getElementById("page-title").innerHTML = text.pageTitle;
-    document.getElementById("page-subtitle").innerHTML = text.pageSubtitle;
     document.getElementById("form-title").innerHTML = text.formTitle;
     document.getElementById("name-label").innerHTML = text.nameLabel;
     document.getElementById("email-label").innerHTML = text.emailLabel;
